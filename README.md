@@ -1,6 +1,6 @@
 # CFF Exam Prep — ME 19-205-0801
 
-**Compressible Fluid Flow** · B.Tech VIII Sem · SOE CUSAT 2019 Scheme
+**Compressible Fluid Flow** · B.Tech VIII Sem · KTU 2019 Scheme
 
 Complete exam preparation site with full detailed answers for all 4 modules, built from past papers (Apr 2023, Jul 2023, Apr 2024, Sept 2024).
 

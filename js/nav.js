@@ -2,7 +2,7 @@
 (function() {
   const nav = `
   <div class="topbar">
-    <a class="topbar-logo" href="../index.html">CFF ▸ SOE CUSAT</a>
+    <a class="topbar-logo" href="../index.html">CFF ▸ KTU</a>
     <div class="topbar-links">
       <a class="topbar-link m1" href="../pages/module1.html">Module 1</a>
       <a class="topbar-link m2" href="../pages/module2.html">Module 2</a>
