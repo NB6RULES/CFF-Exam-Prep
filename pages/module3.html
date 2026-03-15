@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3 — Fanno Flow &amp; Rayleigh Flow | CFF Exam Prep</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="page-wrap">
+  <div class="page-title">Module 3 — Fanno Flow &amp; Rayleigh Flow</div>
+  <div class="page-sub">Fanno line · Friction choking · Rayleigh line · Thermal choking · Constant area ducts</div>
+
+  <div class="section-label">Fanno Flow — Adiabatic Duct with Friction</div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.1</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Write the governing equations and assumptions for Fanno flow. Derive the Fanno line equation in h-s coordinates.</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">3–4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Assumptions of Fanno Flow</div>
+        <ul class="bullet-list">
+          <li>1D steady flow in a <strong>constant area duct</strong></li>
+          <li><strong>Adiabatic</strong> (no heat transfer — Q = 0)</li>
+          <li>Perfect gas with constant γ and Cₚ</li>
+          <li>Friction force exists (wall shear stress τ_w ≠ 0)</li>
+          <li>No body forces, no work done</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Governing Equations</div>
+        <div class="formula-box">Continuity:    ρV = G = constant  (G = mass flux = ṁ/A)
+Energy:        h + V²/2 = h₀ = constant  (adiabatic)
+Momentum:      p + τ_w × P/A × dx = ... (friction term)
+Equation of state: p = ρRT, h = CₚT</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Fanno Line in h-s Coordinates</div>
+        <div class="ans-text"><p>The Fanno line is the locus of all possible states for a given mass flux G and stagnation enthalpy h₀ in an adiabatic constant-area duct.</p></div>
+        <div class="formula-box">From energy: h = h₀ - V²/2
+From continuity: V = G/ρ
+
+Entropy as function of h:
+s = Cᵥ ln(T) + R ln(v) + const  where v = 1/ρ
+
+Using T = h/Cₚ, v = RT/p, and p from momentum continuity:
+→ The Fanno line in (h, s) space is a curved line
+
+Key feature: the line has a MAXIMUM entropy point at M = 1.
+  Upper branch (above max): subsonic flow (M < 1)
+  Lower branch (below max): supersonic flow (M > 1)
+  
+Friction always drives flow TOWARD M = 1 (toward max entropy).
+Both subsonic and supersonic flows approach M=1 with friction.</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Direction of Flow in Fanno Line</div>
+        <ul class="bullet-list">
+          <li><strong>Subsonic (upper branch):</strong> Friction increases entropy → moves right along upper branch toward M=1. Velocity increases toward sonic.</li>
+          <li><strong>Supersonic (lower branch):</strong> Friction increases entropy → moves right along lower branch toward M=1. Velocity decreases toward sonic.</li>
+          <li><strong>Choking:</strong> M=1 is reached at the end of the duct — further duct length not possible without changing inlet conditions.</li>
+        </ul>
+      </div>
+      <div class="callout callout-exam">📝 Draw the Fanno line: a curve in h-s space. Mark M=1 at the nose (max entropy). Upper branch = subsonic, lower = supersonic. Draw arrows showing direction of increasing friction (moving toward M=1 nose).</div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.2</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive the Fanno flow relations — variation of Mach number with duct length, variation of flow properties.</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">4–12 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Fanno Parameter — 4fL*/D</div>
+        <div class="ans-text"><p>The Fanno parameter relates the current Mach number M to the <em>maximum duct length from that point to choking</em> (L*). f = Fanning friction factor, D = diameter:</p></div>
+        <div class="formula-box">4fL*/D = (1-M²)/(γM²) + (γ+1)/(2γ) × ln[(γ+1)M²/(2+(γ-1)M²)]
+
+For air (γ=1.4):
+4fL*/D = (1-M²)/(1.4M²) + 1.2 × ln[2.4M²/(2+0.4M²)]
+
+To find duct length between sections 1 and 2:
+4f(L₁-L₂)/D = (4fL*/D)₁ - (4fL*/D)₂
+(values at M₁ and M₂ from Fanno tables)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Variation of All Flow Properties Along Fanno Duct</div>
+        <div class="formula-box">All properties relative to critical (*) conditions (at M=1):
+
+T/T*  = (γ+1) / [2(1 + (γ-1)/2 × M²)] = (γ+1)/2 × 1/(1+0.2M²)  [air]
+
+p/p*  = (1/M) × √[(γ+1)/(2+(γ-1)M²)]
+       = (1/M) × √[(γ+1)M²T/((γ+1)T)]    simplified
+       = (1/M) × √[T*/T]                    further simplified
+
+ρ/ρ*  = (1/M) × √[(2+(γ-1)M²)/(γ+1)] = p*/p × T/T*
+
+V/V*  = M × √[T/T*]   (since V=Ma and a=√(γRT))
+
+p₀/p₀* = (1/M) × [(2/(γ+1)) × (1 + (γ-1)/2 × M²)]^((γ+1)/2(γ-1))
+
+For air (γ=1.4): p₀/p₀* = (1/M)[(1+0.2M²)/1.2]^3</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Property Trends Along Fanno Duct</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Subsonic Fanno (M&lt;1 → M=1)</div>
+            <ul>
+              <li>V increases (accelerates)</li>
+              <li>M increases toward 1</li>
+              <li>p decreases</li>
+              <li>T decreases</li>
+              <li>p₀ decreases (friction loss)</li>
+              <li>s increases</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Supersonic Fanno (M&gt;1 → M=1)</div>
+            <ul>
+              <li>V decreases (decelerates)</li>
+              <li>M decreases toward 1</li>
+              <li>p increases</li>
+              <li>T increases</li>
+              <li>p₀ decreases (friction loss)</li>
+              <li>s increases</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-tip">💡 In all Fanno problems: (1) find M₁ from given conditions, (2) look up 4fL*/D for M₁ from Fanno tables, (3) use 4fL/D = (4fL*/D)₁ - (4fL*/D)₂ to find M₂, (4) use ratio tables for all other properties.</div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.3</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain friction choking in Fanno flow. What happens when duct length exceeds maximum length?</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 Apr 2023 &amp; Sept 2024</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Friction Choking</div>
+        <div class="ans-text"><p>In Fanno flow, friction always drives the Mach number toward M = 1 (choking condition). The <strong>maximum duct length</strong> L_max is the length at which M reaches exactly 1 at the exit.</p></div>
+        <div class="formula-box">Maximum duct length from entry to choked exit:
+L_max = D/(4f) × (4fL*/D)₁   [where (4fL*/D)₁ is the Fanno parameter at inlet M₁]</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">What Happens if L &gt; L_max?</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Subsonic inlet (M₁&lt;1)</div>
+            <ul>
+              <li>If L &gt; L_max: mass flow rate DECREASES</li>
+              <li>Inlet conditions readjust to lower M₁</li>
+              <li>Exit remains choked at M=1</li>
+              <li>Effective: duct is too long → less flow enters</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Supersonic inlet (M₁&gt;1)</div>
+            <ul>
+              <li>If L &gt; L_max: a normal shock forms in duct</li>
+              <li>Shock converts flow to subsonic</li>
+              <li>Flow continues as subsonic Fanno to exit at M=1</li>
+              <li>Normal shock position adjusts with L</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Rayleigh Flow — Frictionless Duct with Heat Transfer</div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.4</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Write governing equations of Rayleigh flow. Derive the Rayleigh line equation and plot it on a p-v diagram.</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">3–4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Assumptions of Rayleigh Flow</div>
+        <ul class="bullet-list">
+          <li><strong>Constant area duct</strong></li>
+          <li><strong>Frictionless</strong> (f = 0, no wall friction)</li>
+          <li>Heat transfer present (Q ≠ 0) — the mechanism driving flow change</li>
+          <li>Steady 1D flow, perfect gas</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Governing Equations</div>
+        <div class="formula-box">Continuity:     ρV = G = constant
+Momentum:       p + ρV² = p + G×V = constant   ← (no friction!)
+                → p + ρV² = p₁ + ρ₁V₁²
+Energy:         h₀ changes (heat added/removed)
+                h₀₂ - h₀₁ = q  (heat added per unit mass)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Rayleigh Line in p-v Coordinates</div>
+        <div class="ans-text"><p>From continuity: V = Gv (v = specific volume = 1/ρ). Substituting into momentum:</p></div>
+        <div class="formula-box">p + G²v = constant = p₁ + G²v₁
+
+∴ p = (p₁ + G²v₁) - G²v
+
+This is a STRAIGHT LINE with slope = -G²  in (p, v) space.
+
+The Rayleigh line is a straight line with NEGATIVE slope on the p-v diagram.
+
+Maximum entropy on the Rayleigh line occurs at M = 1.
+Upper portion (high p, low v) = subsonic
+Lower portion (low p, high v) = supersonic</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Rayleigh Line vs Fanno Line</div>
+        <div class="ans-text"><p>Both lines pass through the same state points in a duct. Where they intersect: two possible states connected by a normal shock (the Rankine-Hugoniot solution).</p></div>
+      </div>
+      <div class="callout callout-exam">📝 Draw p-v diagram: Rayleigh line as a straight line with negative slope. Mark M=1 at maximum entropy point (maximum T on upper intersection with isentropic). Mark subsonic (upper) and supersonic (lower) regions.</div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.5</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive Rayleigh flow relations — variation of flow properties with heat transfer. Rayleigh equations for a perfect gas.</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">4–12 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Rayleigh Flow Property Ratios (relative to * at M=1)</div>
+        <div class="formula-box">T/T*  = M² × [2(γ+1)/(1+γM²)]²
+       = 4M²(γ+1)² / (1+γM²)²    for general notation
+
+p/p*  = (γ+1) / (1+γM²)
+
+p₀/p₀* = [(γ+1)/(1+γM²)] × [(2+(γ-1)M²)/(γ+1)]^(γ/(γ-1))
+
+T₀/T₀* = 2(γ+1)M² × [2+(γ-1)M²] / (1+γM²)²
+
+ρ/ρ*  = (1+γM²) / [(γ+1)M²]  = 1/(V/V*)
+
+For air (γ=1.4):
+T/T*  = 2.4M²(2.4)² / (1+1.4M²)² = 2.4M² × [2.4/(1+1.4M²)]²
+
+T₀/T₀* = 2.4M²(2+0.4M²) / (1+1.4M²)²</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Property Trends in Rayleigh Flow</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Heat ADDED (q &gt; 0) Subsonic (M&lt;1)</div>
+            <ul>
+              <li>T₀ increases</li>
+              <li>M increases toward 1</li>
+              <li>p decreases</li>
+              <li>T increases (until M=1/√γ ≈ 0.845)</li>
+              <li>V increases</li>
+              <li>p₀ decreases</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Heat ADDED (q &gt; 0) Supersonic (M&gt;1)</div>
+            <ul>
+              <li>T₀ increases</li>
+              <li>M decreases toward 1</li>
+              <li>p increases</li>
+              <li>T increases</li>
+              <li>V decreases</li>
+              <li>p₀ decreases</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Heat Transfer Relation</div>
+        <div class="formula-box">q = h₀₂ - h₀₁ = Cₚ(T₀₂ - T₀₁)
+
+Using T₀/T₀* ratios at M₁ and M₂:
+q = CₚT₀* × [(T₀₂/T₀*) - (T₀₁/T₀*)]
+
+Maximum heat addition (thermal choking):
+q_max = Cₚ(T₀* - T₀₁) = CₚT₀₁ × [(T₀*/T₀₁) - 1]</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.6</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain thermal choking in Rayleigh flow. What is maximum heat transfer? Can subsonic Rayleigh flow become supersonic by continuous heating?</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Thermal Choking</div>
+        <div class="ans-text"><p>In Rayleigh flow, adding heat to the flow drives Mach number toward M = 1. When M = 1 is reached at the exit — the flow is <strong>thermally choked</strong>. No further heat can be added without changing upstream conditions.</p></div>
+        <div class="formula-box">Maximum heat addition (to reach M=1 from inlet Mach M₁):
+q_max = Cₚ T₀₁ × [(T₀*/T₀₁) - 1]
+
+where T₀*/T₀₁ = (1+γM₁²)² / [2(γ+1)M₁²(1 + (γ-1)/2 M₁²)]^(-1)
+
+For air: T₀*/T₀₁ from Rayleigh tables at inlet M₁</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Can Subsonic Rayleigh Flow Become Supersonic by Continuous Heating?</div>
+        <div class="ans-text"><p><strong>No — not in a constant area duct.</strong></p></div>
+        <ul class="bullet-list">
+          <li>Adding heat to subsonic flow moves it along the Rayleigh line toward M=1 (from the upper subsonic branch).</li>
+          <li>To cross M=1 and enter the supersonic branch, the flow would need to jump across the maximum entropy point — which would require a decrease in entropy.</li>
+          <li>This violates the Second Law.</li>
+          <li>Therefore, a subsonic Rayleigh flow <strong>cannot become supersonic</strong> by continuous heating in a constant area duct alone.</li>
+          <li>To achieve supersonic flow, a convergent-divergent nozzle (area change) is required first.</li>
+        </ul>
+        <div class="callout callout-exam">📝 This question was directly asked in Jul 2023: "Can subsonic Rayleigh flow become supersonic by continuous heating? Explain with a Rayleigh line." Draw the h-s or p-v diagram and show that M=1 is a barrier.</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">What Happens at Maximum Heat Transfer (M₂=1/√γ)?</div>
+        <div class="ans-text"><p>A curious result: in subsonic Rayleigh flow, the static temperature reaches a maximum at M = 1/√γ (for air: M = 1/√1.4 ≈ 0.845), not at M = 1. Beyond this point, adding more heat actually <em>decreases</em> static temperature even though stagnation temperature increases (because velocity increase dominates).</p></div>
+        <div class="formula-box">Maximum static temperature in subsonic Rayleigh: at M = 1/√γ = 0.845 (air)
+At this point: V = a/√γ = √(RT) — not sonic speed!</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.7</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Differentiate between frictional choking (Fanno) and thermal choking (Rayleigh).</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 Apr 2023</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="compare-grid">
+        <div class="compare-cell">
+          <div class="compare-cell-title">Frictional Choking (Fanno)</div>
+          <ul>
+            <li>Cause: wall friction in constant area duct</li>
+            <li>Adiabatic flow (no heat transfer)</li>
+            <li>T₀ is conserved</li>
+            <li>p₀ decreases due to friction</li>
+            <li>Both subsonic and supersonic drive toward M=1</li>
+            <li>Limit: maximum duct length L_max</li>
+            <li>Parameter: 4fL*/D</li>
+            <li>Fanno line in h-s space</li>
+          </ul>
+        </div>
+        <div class="compare-cell">
+          <div class="compare-cell-title green">Thermal Choking (Rayleigh)</div>
+          <ul>
+            <li>Cause: heat addition in constant area duct</li>
+            <li>Frictionless (no friction)</li>
+            <li>T₀ increases (heat added)</li>
+            <li>p₀ decreases due to heat addition</li>
+            <li>Both subsonic and supersonic drive toward M=1</li>
+            <li>Limit: maximum heat addition q_max</li>
+            <li>Parameter: T₀/T₀*</li>
+            <li>Rayleigh line in p-v or h-s space</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-answer">
+        <div class="key-answer-label">Key Similarity</div>
+        Both Fanno and Rayleigh flows drive the Mach number toward 1 regardless of whether inlet is subsonic or supersonic. In both cases, M=1 is the maximum entropy state and represents the choking condition. The difference is the mechanism: friction (Fanno) vs heat transfer (Rayleigh).
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">3.8</div>
+      <div class="q-text-wrap">
+        <div class="q-title">What is the Mach number that limits the increase in static enthalpy in Rayleigh flow?</div>
+        <div class="q-tags"><span class="tag tag-m3">Module 3</span><span class="tag tag-hot">🔥 Jul 2023 Q VII-a</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Derivation</div>
+        <div class="ans-text"><p>Static enthalpy h = CₚT in Rayleigh flow. We need the Mach number at which T (and hence h) is maximum.</p></div>
+        <div class="formula-box">T/T* = 4(γ+1)²M² / (1+γM²)²
+
+For maximum T, differentiate d(T/T*)/dM = 0:
+
+d/dM [M²/(1+γM²)²] = 0
+
+Using quotient rule:
+(1+γM²)² × 2M - M² × 2(1+γM²) × 2γM = 0
+Divide by 2M(1+γM²):
+(1+γM²) - 2γM² = 0
+1 + γM² - 2γM² = 0
+1 - γM² = 0
+
+∴ M² = 1/γ
+   M = 1/√γ
+
+For air (γ=1.4):  M = 1/√1.4 = 1/1.183 = 0.845</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Physical Significance</div>
+        <ul class="bullet-list">
+          <li>At M = 1/√γ ≈ 0.845 (for air): maximum static temperature (and enthalpy) in subsonic Rayleigh flow.</li>
+          <li>Beyond this point (toward M=1), adding heat INCREASES T₀ but DECREASES static T (kinetic energy increases faster).</li>
+          <li>For supersonic Rayleigh flow, static temperature always increases with heat addition (moving from M&gt;1 toward M=1).</li>
+          <li>This M = 1/√γ point is NOT the choking point — choking occurs at M = 1.</li>
+        </ul>
+        <div class="formula-box">At M = 1/√γ:  V = a/√γ = √(RT)   [not the speed of sound!]
+Velocity at this point equals √(p/ρ) — called the "characteristic velocity"</div>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+<footer>ME 19-205-0801 · Module 3: Fanno Flow &amp; Rayleigh Flow · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

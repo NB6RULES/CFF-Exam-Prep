@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 — Gas Dynamics &amp; Isentropic Flow | CFF Exam Prep</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<script src="../js/nav.js"></script>
+
+<div class="page-wrap">
+  <div class="page-title">Module 1 — Gas Dynamics &amp; Isentropic Flow</div>
+  <div class="page-sub">Stagnation state · Mach number · Isentropic relations · Critical state · C-D Nozzle · Impulse function</div>
+
+  <div class="section-label">Core Theory Questions</div>
+
+  <!-- Q1 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.1</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain the effect of Mach number on compressibility. Define Mach number and Mach cone.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Mach Number Definition</div>
+        <div class="ans-text"><p><strong>Mach number M</strong> is the ratio of the local flow velocity to the local speed of sound:</p></div>
+        <div class="formula-box">M = V / a     where a = √(γRT) = local speed of sound
+
+Classification:
+  M < 1   → Subsonic flow
+  M = 1   → Sonic flow (critical)
+  1 < M < 5 → Supersonic flow
+  M > 5   → Hypersonic flow
+  M < 0.3 → Incompressible (compressibility effects &lt;5%)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Effect of Mach Number on Compressibility</div>
+        <ul class="bullet-list">
+          <li>At <strong>M &lt; 0.3</strong>: density variation &lt;5% — treated as incompressible. Bernoulli equation applies accurately.</li>
+          <li>At <strong>M = 0.8</strong>: compressibility causes ~17% error if incompressible equations are used (standard result — see numericals).</li>
+          <li>At <strong>M ≥ 1</strong>: compressibility is dominant. Density changes significantly. Shock waves can form.</li>
+          <li>The pressure coefficient correction: Cp_compressible = Cp_incompressible / √(1-M²) — Prandtl-Glauert rule (subsonic).</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Mach Cone and Mach Angle</div>
+        <div class="ans-text"><p>When an object moves at supersonic speed (M &gt; 1), it outruns the pressure waves it generates. The envelope of these waves forms a conical wavefront — the <strong>Mach cone</strong>.</p></div>
+        <div class="formula-box">Mach angle: sin μ = a/V = 1/M
+
+At M=1: μ = 90° (normal to flow — no cone forms)
+At M=2: μ = 30°
+At M→∞: μ → 0° (very narrow cone)
+
+Mach cone half-angle μ DECREASES as M INCREASES</div>
+        <div class="ans-text"><p>Inside the Mach cone: <strong>zone of action</strong> — disturbances can reach here. Outside: <strong>zone of silence</strong> — unaffected by the moving source.</p></div>
+      </div>
+      <div class="callout callout-exam">📝 Always draw the Mach cone: point source moving right, two diverging lines forming the cone, label μ and V, mark zone of action vs zone of silence.</div>
+    </div></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.2</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Define stagnation state and critical state. Derive expressions for stagnation temperature and pressure.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Repeated</span><span class="tag tag-marks">4–8 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Stagnation State</div>
+        <div class="ans-text"><p>The <strong>stagnation state</strong> is the hypothetical state reached when the flow is brought to rest <strong>isentropically</strong> (reversibly and adiabatically). Stagnation properties represent the total energy of the flow.</p></div>
+        <div class="formula-box">Stagnation temperature:   T₀ = T + V²/(2Cₚ)  ← from energy equation
+Stagnation enthalpy:     h₀ = h + V²/2
+
+Using T₀/T = 1 + (γ-1)/2 × M²:
+T₀ = T × (1 + 0.2M²)        for air
+
+Stagnation pressure (isentropic process):
+p₀/p = (T₀/T)^(γ/(γ-1)) = (1 + (γ-1)/2 × M²)^(γ/(γ-1))
+p₀  = p × (1 + 0.2M²)^3.5   for air
+
+Stagnation density:
+ρ₀/ρ = (1 + (γ-1)/2 × M²)^(1/(γ-1))
+ρ₀  = ρ × (1 + 0.2M²)^2.5   for air</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Critical State (denoted by *)</div>
+        <div class="ans-text"><p>The <strong>critical state</strong> is the state when flow velocity equals the local speed of sound — i.e., M = 1. Critical conditions are the reference state for isentropic flow analysis.</p></div>
+        <div class="formula-box">At M = 1 (critical/throat condition):
+
+T* = T₀ × 2/(γ+1)       = 0.8333 T₀  for air
+p* = p₀ × (2/(γ+1))^(γ/(γ-1)) = 0.5283 p₀  for air
+ρ* = ρ₀ × (2/(γ+1))^(1/(γ-1)) = 0.6339 ρ₀  for air
+a* = √(γRT*)              = critical speed of sound
+V* = a*                   (velocity = speed of sound at M=1)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Adiabatic Energy Equation (Steady Flow Energy Equation)</div>
+        <div class="formula-box">h + V²/2 = h₀ = constant    (adiabatic, no work)
+
+CₚT + V²/2 = CₚT₀ = constant
+
+T₀ - T = V²/(2Cₚ)     ← kinetic energy converted to thermal energy
+                            when flow is isentropically brought to rest</div>
+      </div>
+      <div class="callout callout-tip">💡 T₀ is conserved in adiabatic flows (even across shocks). p₀ is conserved only in isentropic flows — it drops across shocks and through ducts with friction or heat transfer.</div>
+    </div></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.3</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive the area-velocity relationship for isentropic flow. Explain accelerating and decelerating passages for different Mach numbers.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Apr 2023 &amp; Apr 2024</span><span class="tag tag-marks">3–4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Derivation</div>
+        <div class="ans-text"><p>Start from the continuity equation and Euler's equation for 1D isentropic flow:</p></div>
+        <div class="formula-box">Continuity: ρAV = constant
+→ dρ/ρ + dA/A + dV/V = 0    ...(1)
+
+Euler (momentum): V dV = -dp/ρ
+For isentropic: dp = a² dρ  (a = speed of sound)
+→ dρ/ρ = -V dV/a² = -M² dV/V  ...(2)
+
+Substituting (2) into (1):
+-M²dV/V + dA/A + dV/V = 0
+dA/A = (M²-1) dV/V
+
+∴  dA/A = (M² - 1) dV/V   ← Area-Velocity Relation</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Physical Interpretation</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Subsonic (M &lt; 1)</div>
+            <ul>
+              <li>(M²-1) &lt; 0</li>
+              <li>dA and dV have OPPOSITE signs</li>
+              <li>Converging duct → accelerates (like a pump nozzle)</li>
+              <li>Diverging duct → decelerates (like a diffuser)</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Supersonic (M &gt; 1)</div>
+            <ul>
+              <li>(M²-1) &gt; 0</li>
+              <li>dA and dV have SAME sign</li>
+              <li>Diverging duct → accelerates (supersonic nozzle)</li>
+              <li>Converging duct → decelerates (supersonic diffuser)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="key-answer">
+          <div class="key-answer-label">Key Conclusion</div>
+          To accelerate a flow from subsonic to supersonic, the duct must first converge (to reach M=1 at throat) then diverge (to continue accelerating to M&gt;1). This is the convergent-divergent (Laval) nozzle. At M=1: dV/V is finite and dA/A = 0 — the throat (minimum area).
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.4</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive expression for area ratio A/A* as a function of Mach number for isentropic flow of a perfect gas. What is geometric choking?</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Sept 2024 Q III-a</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Derivation</div>
+        <div class="ans-text"><p>From continuity between any section (A, M) and the critical section (A*, M=1):</p></div>
+        <div class="formula-box">ρAV = ρ*A*V*   (mass conservation, choked)
+
+A/A* = (ρ*V*) / (ρV) = (ρ*/ρ) × (V*/V) = (ρ*/ρ) × (a*/V)
+
+Using isentropic relations:
+ρ/ρ₀ = (1 + (γ-1)/2 M²)^(-1/(γ-1))
+ρ*/ρ₀ = (2/(γ+1))^(1/(γ-1))
+a* = √(γRT*), V = M×a = M×√(γRT)
+T*/T = (1 + (γ-1)/2 M²) / (γ+1)/2
+
+Combining:
+
+A/A* = (1/M) × [2/(γ+1) × (1 + (γ-1)/2 × M²)]^((γ+1)/2(γ-1))
+
+For air (γ = 1.4):
+A/A* = (1/M) × [(1 + 0.2M²)/1.2]^3</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Properties of the A/A* Function</div>
+        <ul class="bullet-list">
+          <li>For every A/A* &gt; 1, there are TWO solutions: one subsonic M and one supersonic M.</li>
+          <li>Minimum A/A* = 1 occurs at M = 1 (the throat).</li>
+          <li>The throat (minimum area) is the only location where M = 1 can occur in a smooth isentropic flow.</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Geometric Choking</div>
+        <div class="ans-text"><p><strong>Geometric choking</strong> occurs when the throat area A* reaches its minimum physical value — i.e., the throat area limits the mass flow rate. Once the throat is sonic (M=1), no further increase in mass flow is possible by reducing back pressure alone — the nozzle is <strong>choked</strong>.</p></div>
+        <div class="formula-box">Maximum mass flow (choked):
+ṁ_max = ρ*A*V* = p₀A*√(γ/RT₀) × (2/(γ+1))^((γ+1)/2(γ-1))
+
+For air: ṁ_max = 0.6847 × p₀A*/√T₀   [SI units]</div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.5</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain the Steady Flow Energy Equation and the adiabatic steady flow ellipse. Show various regions of flow on the ellipse.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Jul 2023 &amp; Apr 2024</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Steady Flow Energy Equation (SFEE)</div>
+        <div class="formula-box">h + V²/2 = h₀ = CₚT₀  (adiabatic, no work)
+
+Using h = CᵥT, a² = γRT = γ(γ-1)CᵥT:
+a²/(γ-1) + V²/2 = a₀²/(γ-1) = constant
+
+Rearranging:
+(a/a₀)² + (γ-1)/2 × (V/a₀)² = 1</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">The Adiabatic Flow Ellipse</div>
+        <div class="ans-text"><p>This equation is the equation of an <strong>ellipse</strong> in (V, a) space — the <strong>adiabatic flow ellipse</strong> (also called the Fliegner ellipse). Every point on the ellipse represents a possible flow state with the same stagnation enthalpy.</p></div>
+        <ul class="bullet-list">
+          <li><strong>Point A (V=0, a=a₀):</strong> Stagnation state — all energy as thermal, zero kinetic.</li>
+          <li><strong>Point B (V=a*):</strong> Sonic state — M=1 critical condition. Located where 45° line from origin intersects ellipse.</li>
+          <li><strong>Region V &lt; a* (subsonic):</strong> Between A and B on upper ellipse. M &lt; 1.</li>
+          <li><strong>Region a* &lt; V &lt; V_max (supersonic):</strong> Between B and C. M &gt; 1.</li>
+          <li><strong>Point C (a=0, V=V_max):</strong> Maximum velocity — all energy converted to kinetic, T=0 (absolute zero). V_max = √(2CₚT₀) = a₀√(2/(γ-1)).</li>
+        </ul>
+        <div class="formula-box">V_max = √(2CₚT₀) = a₀ × √(2/(γ-1))
+For air: V_max = a₀ × √(2/0.4) = a₀ × √5 = 2.236 a₀
+
+a* = a₀ × √(2/(γ+1)) = a₀ × √(2/2.4) = 0.9129 a₀  for air</div>
+      </div>
+      <div class="callout callout-exam">📝 Draw the ellipse: horizontal axis = V/a₀, vertical axis = a/a₀. Mark point A (stagnation), B (sonic M=1), C (maximum velocity). Shade subsonic and supersonic regions.</div>
+    </div></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.6</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain Impulse function and derive an expression for it. What is its significance?</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Sept 2024 Q I-b</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Definition</div>
+        <div class="ans-text"><p>The <strong>Impulse function F</strong> (also called the Thrust function) is the sum of pressure force and momentum flux at a cross-section of a duct. It is conserved in isentropic flow without external forces.</p></div>
+        <div class="formula-box">F = pA + ṁV = pA + ρAV²
+
+Dividing by p₀A*:
+F/(p₀A*) = (p/p₀)(A/A*)(1 + γM²)
+
+Using isentropic relations, this simplifies to a function of M only:
+F/(p₀A*) = (A/A*) × (p/p₀) × (1 + γM²)
+          = f(M)  — the impulse function ratio</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Significance</div>
+        <ul class="bullet-list">
+          <li>Across a <strong>normal shock</strong>: impulse function F is conserved (same upstream and downstream) since p₁A₁ + ρ₁A₁V₁² = p₂A₂ + ρ₂A₂V₂².</li>
+          <li>Used to calculate <strong>thrust of rocket nozzles and jet engines</strong>.</li>
+          <li>Change in impulse function = net thrust force.</li>
+          <li>In nozzle design: F/F* tables available similar to A/A* tables.</li>
+        </ul>
+        <div class="formula-box">Change in thrust across a section:
+ΔF = F₂ - F₁ = net thrust
+
+For choked nozzle: F_exit = p_exit × A_exit × (1 + γM_exit²) + (p_exit - p_amb)A_exit</div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.7</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain flow through a C-D nozzle at design, above-design, and below-design pressure ratios. Isentropic flow through diffusers.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Apr 2023 &amp; Jul 2023</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">C-D Nozzle Operating Regimes</div>
+        <ol class="steps-list">
+          <li><strong>p_b = p₀:</strong> No flow.</li>
+          <li><strong>p_b slightly &lt; p₀:</strong> Subsonic flow throughout, throat unchoked. Isentropic.</li>
+          <li><strong>p_b = p_c1 (first critical):</strong> Throat just reaches M=1. Entire nozzle isentropic. Diverging section acts as subsonic diffuser (flow decelerates after throat).</li>
+          <li><strong>p_c1 &gt; p_b &gt; p_c2:</strong> Normal shock exists in diverging section. Upstream of shock: isentropic supersonic. Shock moves toward exit as p_b decreases.</li>
+          <li><strong>p_b = p_c2:</strong> Normal shock sits exactly at exit.</li>
+          <li><strong>p_c2 &gt; p_b &gt; p_design:</strong> Oblique shocks form outside the nozzle (over-expanded: p_e &lt; p_b).</li>
+          <li><strong>p_b = p_design:</strong> Fully isentropic supersonic flow to exit. Design condition.</li>
+          <li><strong>p_b &lt; p_design:</strong> Under-expanded: expansion waves form outside exit (p_e &gt; p_b).</li>
+        </ol>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Isentropic Flow Through Diffusers</div>
+        <div class="ans-text"><p>A diffuser converts kinetic energy to pressure energy. For isentropic operation:</p></div>
+        <ul class="bullet-list">
+          <li><strong>Subsonic diffuser:</strong> Diverging duct — velocity decreases, pressure increases. Prone to flow separation if divergence angle &gt;~7°.</li>
+          <li><strong>Supersonic diffuser:</strong> Converging duct — counterintuitive! Velocity decreases (from supersonic), pressure increases. Then must pass through M=1 and further diffuse subsonically.</li>
+          <li>Ideal supersonic diffuser has a converging section (to M=1) followed by a diverging section — essentially a C-D nozzle in reverse.</li>
+          <li>A normal shock in the diffuser throat gives minimum practical loss (diffuser design in wind tunnels).</li>
+        </ul>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">1.8</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive the maximum mass flow rate expression through a nozzle. What is meant by Derive expression for mass flow rate.</div>
+        <div class="q-tags"><span class="tag tag-m1">Module 1</span><span class="tag tag-hot">🔥 Apr 2024 Q I-a</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">General Mass Flow Rate</div>
+        <div class="formula-box">ṁ = ρAV = ρ₀(ρ/ρ₀) × A × M × a
+
+Using isentropic relations:
+ρ/ρ₀ = (1 + (γ-1)/2 M²)^(-1/(γ-1))
+a = √(γRT) = √(γRT₀) × (T/T₀)^(1/2) = a₀ × (1 + (γ-1)/2 M²)^(-1/2)
+
+Substituting:
+ṁ = p₀A × M × √(γ/(RT₀)) × (1 + (γ-1)/2 × M²)^(-(γ+1)/2(γ-1))</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Maximum (Choked) Mass Flow Rate</div>
+        <div class="ans-text"><p>Maximum ṁ occurs when M = 1 at throat (A = A*):</p></div>
+        <div class="formula-box">ṁ_max = p₀A* × √(γ/RT₀) × (2/(γ+1))^((γ+1)/2(γ-1))
+
+For air (γ=1.4, R=287):
+ṁ_max = 0.6847 × p₀A* / √T₀    [kg/s, Pa, m², K]
+
+This is the MAXIMUM possible mass flow — further reducing back pressure
+does NOT increase flow rate once throat is choked.</div>
+      </div>
+    </div></div>
+  </div>
+
+</div><!-- end page-wrap -->
+
+<footer>ME 19-205-0801 · Module 1: Gas Dynamics &amp; Isentropic Flow · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

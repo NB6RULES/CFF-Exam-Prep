@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFF Exam Prep — ME 19-205-0801</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.topbar-logo { font-size: 13px; }
+
+/* ── DOCS SECTION ── */
+.docs-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 32px 20px;
+}
+.docs-section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin: 48px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.docs-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Syllabus card */
+.syllabus-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+  margin-bottom: 24px;
+}
+.syllabus-card-head {
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+.syllabus-card-head:hover { background: var(--surface2); }
+.syllabus-card-title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.syllabus-card-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 3px;
+}
+.syllabus-toggle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(240,180,41,0.08);
+  border: 1px solid rgba(240,180,41,0.25);
+  border-radius: 3px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.syllabus-toggle:hover { background: rgba(240,180,41,0.15); }
+.syllabus-body { display: none; }
+.syllabus-body.open { display: block; }
+.syllabus-img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  max-height: 900px;
+  background: #fff;
+}
+
+/* PYQ grid */
+.pyq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.pyq-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pyq-card-head {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+.pyq-card-head:hover { background: var(--surface2); }
+.pyq-card.open .pyq-card-head { background: var(--surface2); }
+.pyq-card-info { flex: 1; }
+.pyq-card-title {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.pyq-card-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 3px;
+  letter-spacing: .04em;
+}
+.pyq-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid;
+  margin-right: 8px;
+}
+.pyq-badge-r  { color: var(--green);  border-color: rgba(62,207,142,.3); background: rgba(62,207,142,.07); }
+.pyq-badge-ss { color: var(--blue);   border-color: rgba(77,166,255,.3); background: rgba(77,166,255,.07); }
+.pyq-chevron {
+  font-size: 18px;
+  color: var(--text3);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.pyq-card.open .pyq-chevron { transform: rotate(90deg); color: var(--accent); }
+.pyq-embed { display: none; }
+.pyq-card.open .pyq-embed { display: block; }
+.pyq-embed iframe {
+  width: 100%;
+  height: 680px;
+  border: none;
+  display: block;
+  background: #fff;
+}
+.pyq-embed-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.pyq-dl-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  background: rgba(240,180,41,0.07);
+  border: 1px solid rgba(240,180,41,0.25);
+  border-radius: 3px;
+  padding: 5px 12px;
+  transition: background .15s;
+  letter-spacing: .04em;
+}
+.pyq-dl-btn:hover { background: rgba(240,180,41,0.15); }
+.pyq-dl-btn.open-btn {
+  color: var(--blue);
+  background: rgba(77,166,255,0.07);
+  border-color: rgba(77,166,255,0.25);
+}
+.pyq-dl-btn.open-btn:hover { background: rgba(77,166,255,0.15); }
+.pyq-pages {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .docs-section { padding: 0 18px 20px; }
+  .pyq-embed iframe { height: 480px; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="topbar-logo">CFF ▸ KTU</span>
+  <div class="topbar-links">
+    <a class="topbar-link m1" href="pages/module1.html">Module 1</a>
+    <a class="topbar-link m2" href="pages/module2.html">Module 2</a>
+    <a class="topbar-link m3" href="pages/module3.html">Module 3</a>
+    <a class="topbar-link m4" href="pages/module4.html">Module 4</a>
+    <a class="topbar-link" href="pages/numericals.html">Numericals</a>
+    <a class="topbar-link" href="pages/quickref.html">Quick Ref</a>
+  </div>
+  <input class="topbar-search" type="text" placeholder="Search… (/)">
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">ME 19-205-0801 · 2019 Scheme · Cochin University of Science and Technology</div>
+    <h1>Compressible<br><span>Fluid Flow</span></h1>
+    <div class="hero-sub">B.Tech VIII Sem · Complete Exam Prep · All 4 Modules · Past Papers: Apr 2023, Jul 2023, Apr 2024, Sept 2024</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Modules</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Past Papers</div></div>
+      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Questions</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Worked Numericals</div></div>
+      <div class="stat"><div class="stat-num">60</div><div class="stat-label">Max Marks</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE CARDS -->
+<div class="index-grid">
+  <a class="module-card mc-m1" href="pages/module1.html">
+    <div class="module-card-num">Module 1</div>
+    <h2>Gas Dynamics &amp; Isentropic Flow</h2>
+    <p>Mach number, stagnation state, isentropic flow with area change, critical conditions, convergent-divergent nozzles, diffusers.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">8 questions</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="module-card mc-m2" href="pages/module2.html">
+    <div class="module-card-num">Module 2</div>
+    <h2>Normal Shocks &amp; Oblique Shocks</h2>
+    <p>Rankine-Hugoniot, Prandtl-Meyer relation, θ-β-M diagram, strong/weak shocks, expansion waves, Mach waves.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">8 questions</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="module-card mc-m3" href="pages/module3.html">
+    <div class="module-card-num">Module 3</div>
+    <h2>Fanno Flow &amp; Rayleigh Flow</h2>
+    <p>Adiabatic flow with friction, Fanno line, friction choking, frictionless flow with heat transfer, Rayleigh line, thermal choking.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">8 questions</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="module-card mc-m4" href="pages/module4.html">
+    <div class="module-card-num">Module 4</div>
+    <h2>Flow Measurement &amp; Wind Tunnels</h2>
+    <p>Pitot tubes, Schlieren, Shadowgraph, Interferometer, Hot wire anemometer, Velocimeter, Wind tunnels, Shock tube.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">9 questions</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="module-card mc-num" href="pages/numericals.html">
+    <div class="module-card-num" style="color:var(--accent2)">Numericals</div>
+    <h2>Must-Do Worked Problems</h2>
+    <p>All numerical questions from 4 past papers with full step-by-step solutions — Mach angle, shocks, nozzles, Fanno, Rayleigh, oblique shocks.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">12 worked problems</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="module-card mc-ref" href="pages/quickref.html">
+    <div class="module-card-num" style="color:var(--text2)">Reference</div>
+    <h2>Quick Reference &amp; Formula Sheet</h2>
+    <p>All key formulas, table values, gas properties, and exam strategy. Print-friendly layout.</p>
+    <div class="module-card-footer">
+      <span class="module-card-count">All formulas</span>
+      <span class="module-card-arrow">→</span>
+    </div>
+  </a>
+</div>
+
+<!-- ═══════════════════ DOCUMENTS SECTION ═══════════════════ -->
+<div class="docs-section">
+
+  <!-- SYLLABUS -->
+  <div class="docs-section-label">Course Syllabus</div>
+  <div class="syllabus-card" id="syllabus-card">
+    <div class="syllabus-card-head" onclick="toggleSyllabus()">
+      <div>
+        <div class="syllabus-card-title">ME 19-205-0801 — Compressible Fluid Flow Syllabus</div>
+        <div class="syllabus-card-meta">2019 Scheme · B.Tech VIII Semester Mechanical Engineering · KTU</div>
+      </div>
+      <button class="syllabus-toggle" id="syllabus-btn">Show Syllabus</button>
+    </div>
+    <div class="syllabus-body" id="syllabus-body">
+      <img src="docs/syllabus.png" alt="CFF Syllabus — ME 19-205-0801" class="syllabus-img">
+    </div>
+  </div>
+
+  <!-- PYQ PAPERS -->
+  <div class="docs-section-label">Previous Year Question Papers</div>
+  <div class="pyq-grid">
+
+    <!-- Sept 2024 -->
+    <div class="pyq-card" id="pyq-sept-2024">
+      <div class="pyq-card-head" onclick="togglePyq('pyq-sept-2024')">
+        <div class="pyq-card-info">
+          <div class="pyq-card-title">
+            <span class="pyq-badge pyq-badge-ss">Supp</span>September 2024
+          </div>
+          <div class="pyq-card-meta">BTS-VIII(S/S)-09-24-2837 · Special Supplementary Exam · 2 pages</div>
+        </div>
+        <span class="pyq-chevron">›</span>
+      </div>
+      <div class="pyq-embed">
+        <iframe src="docs/pyq-sept-2024.pdf" title="Sept 2024 Question Paper"></iframe>
+        <div class="pyq-embed-actions">
+          <a class="pyq-dl-btn" href="docs/pyq-sept-2024.pdf" download="CFF-Sept-2024.pdf">↓ Download</a>
+          <a class="pyq-dl-btn open-btn" href="docs/pyq-sept-2024.pdf" target="_blank">↗ Open in new tab</a>
+          <span class="pyq-pages">2 pages · 150 KB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apr 2024 -->
+    <div class="pyq-card" id="pyq-apr-2024">
+      <div class="pyq-card-head" onclick="togglePyq('pyq-apr-2024')">
+        <div class="pyq-card-info">
+          <div class="pyq-card-title">
+            <span class="pyq-badge pyq-badge-r">Reg</span>April 2024
+          </div>
+          <div class="pyq-card-meta">BTS-VIII(R/S)-04-24-2265 · Regular/Supplementary Exam · 2 pages</div>
+        </div>
+        <span class="pyq-chevron">›</span>
+      </div>
+      <div class="pyq-embed">
+        <iframe src="docs/pyq-apr-2024.pdf" title="Apr 2024 Question Paper"></iframe>
+        <div class="pyq-embed-actions">
+          <a class="pyq-dl-btn" href="docs/pyq-apr-2024.pdf" download="CFF-Apr-2024.pdf">↓ Download</a>
+          <a class="pyq-dl-btn open-btn" href="docs/pyq-apr-2024.pdf" target="_blank">↗ Open in new tab</a>
+          <span class="pyq-pages">2 pages · 144 KB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jul 2023 -->
+    <div class="pyq-card" id="pyq-jul-2023">
+      <div class="pyq-card-head" onclick="togglePyq('pyq-jul-2023')">
+        <div class="pyq-card-info">
+          <div class="pyq-card-title">
+            <span class="pyq-badge pyq-badge-ss">Supp</span>July 2023
+          </div>
+          <div class="pyq-card-meta">BTS-VIII(SS)-07-23-1893 · Special Supplementary Exam · 2 pages</div>
+        </div>
+        <span class="pyq-chevron">›</span>
+      </div>
+      <div class="pyq-embed">
+        <iframe src="docs/pyq-jul-2023.pdf" title="Jul 2023 Question Paper"></iframe>
+        <div class="pyq-embed-actions">
+          <a class="pyq-dl-btn" href="docs/pyq-jul-2023.pdf" download="CFF-Jul-2023.pdf">↓ Download</a>
+          <a class="pyq-dl-btn open-btn" href="docs/pyq-jul-2023.pdf" target="_blank">↗ Open in new tab</a>
+          <span class="pyq-pages">2 pages · 125 KB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apr 2023 -->
+    <div class="pyq-card" id="pyq-apr-2023">
+      <div class="pyq-card-head" onclick="togglePyq('pyq-apr-2023')">
+        <div class="pyq-card-info">
+          <div class="pyq-card-title">
+            <span class="pyq-badge pyq-badge-r">Reg</span>April 2023
+          </div>
+          <div class="pyq-card-meta">BTS-VIII(R)-04-23-1543 · Regular Exam · 2 pages</div>
+        </div>
+        <span class="pyq-chevron">›</span>
+      </div>
+      <div class="pyq-embed">
+        <iframe src="docs/pyq-apr-2023.pdf" title="Apr 2023 Question Paper"></iframe>
+        <div class="pyq-embed-actions">
+          <a class="pyq-dl-btn" href="docs/pyq-apr-2023.pdf" download="CFF-Apr-2023.pdf">↓ Download</a>
+          <a class="pyq-dl-btn open-btn" href="docs/pyq-apr-2023.pdf" target="_blank">↗ Open in new tab</a>
+          <span class="pyq-pages">2 pages · 142 KB</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end pyq-grid -->
+</div><!-- end docs-section -->
+
+<footer style="margin-top:48px;">ME 19-205-0801 Compressible Fluid Flow · KTU 2019 Scheme · Past Papers 2023–2024</footer>
+
+<script src="js/main.js"></script>
+<script>
+function toggleSyllabus() {
+  const body = document.getElementById('syllabus-body');
+  const btn  = document.getElementById('syllabus-btn');
+  const open = body.classList.toggle('open');
+  btn.textContent = open ? 'Hide Syllabus' : 'Show Syllabus';
+}
+
+function togglePyq(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+// Auto-open first paper on load for quick access
+window.addEventListener('load', () => {
+  // Only open if not mobile (saves bandwidth on small screens)
+  if (window.innerWidth > 768) {
+    document.getElementById('pyq-sept-2024').classList.add('open');
+  }
+});
+</script>
+</body>
+</html>

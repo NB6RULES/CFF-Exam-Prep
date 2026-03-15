@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2 — Shocks &amp; Expansion Waves | CFF Exam Prep</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="page-wrap">
+  <div class="page-title">Module 2 — Normal Shocks, Oblique Shocks &amp; Expansion Waves</div>
+  <div class="page-sub">Rankine-Hugoniot · Prandtl-Meyer relation · θ-β-M diagram · Oblique shocks · Expansion fans · Mach waves</div>
+
+  <div class="section-label">Normal Shocks</div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.1</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Why is a normal shock impossible in subsonic flow? Prove using entropy argument.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 All 4 Papers</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Entropy Argument</div>
+        <div class="ans-text"><p>A normal shock is an irreversible process — entropy must increase (Second Law). The entropy change across a normal shock is:</p></div>
+        <div class="formula-box">s₂ - s₁ = Cᵥ ln(p₂/p₁) - Cₚ ln(ρ₂/ρ₁)
+
+It can be shown from the Rankine-Hugoniot relations that for small (M₁-1):
+s₂ - s₁ ∝ (M₁² - 1)³
+
+This expression is:
+  POSITIVE when M₁ > 1  → entropy increases ✓ (physically possible)
+  ZERO     when M₁ = 1  → no shock
+  NEGATIVE when M₁ < 1  → entropy DECREASES ✗ (violates 2nd Law)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Physical Explanation</div>
+        <ul class="bullet-list">
+          <li>In subsonic flow, pressure disturbances propagate upstream — compression waves equalize before forming a discontinuity.</li>
+          <li>In supersonic flow, disturbances cannot travel upstream. Waves pile up to form a shock.</li>
+          <li>A shock always decelerates flow: M₁ &gt; 1 → M₂ &lt; 1. Reverse is impossible.</li>
+        </ul>
+      </div>
+      <div class="key-answer">
+        <div class="key-answer-label">Write This Line</div>
+        A normal shock in subsonic flow (M₁ &lt; 1) would require entropy to decrease, violating the Second Law of Thermodynamics. Therefore normal shocks can only exist when M₁ &gt; 1 (supersonic upstream). Downstream flow is always subsonic (M₂ &lt; 1).
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.2</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive the Prandtl-Meyer relation V₁V₂ = a*² for a normal shock wave.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 3/4 Papers</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Starting Equations</div>
+        <div class="formula-box">Continuity:  ρ₁V₁ = ρ₂V₂           ...(1)
+Momentum:    p₁ + ρ₁V₁² = p₂ + ρ₂V₂²  ...(2)
+Energy:      CₚT₁ + V₁²/2 = CₚT₂ + V₂²/2 = CₚT₀  ...(3)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Derivation Steps</div>
+        <ol class="steps-list">
+          <li>From momentum (2): (p₂-p₁) = ρ₁V₁(V₁-V₂) using continuity → p₂-p₁ = ρ₁V₁(V₁-V₂) ...(4)</li>
+          <li>For perfect gas: p = ρa²/γ. Substituting: a₂²/γ - a₁²/γ = V₁V₁ - V₁V₂ - V₂V₁ + V₂² ... after algebra using (1) and (2)</li>
+          <li>From energy (3): a²/(γ-1) + V²/2 = a₀²/(γ-1) = constant. At critical state (M=1): a*² = a₀² × 2/(γ+1)</li>
+          <li>The energy equation gives: a₁² = a*² - (γ-1)/2 × (V₁²-a*²) × ... (critical state substitution)</li>
+          <li>After substituting and eliminating a₁, a₂ using both momentum and energy:</li>
+        </ol>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Result</div>
+        <div class="formula-box">V₁ · V₂ = a*²    ← Prandtl-Meyer Relation
+
+where a*² = (2/(γ+1)) × a₀² = critical speed of sound squared
+         = (2γ/(γ+1)) × p₀/ρ₀
+
+Physical meaning:
+If V₁ > a* (supersonic) → V₂ < a* (subsonic)
+∴ Normal shock always converts supersonic to subsonic flow.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.3</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive static pressure ratio, temperature ratio, and downstream Mach number across a normal shock (Rankine-Hugoniot relations).</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 Apr 2023</span><span class="tag tag-marks">4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">All Rankine-Hugoniot Relations</div>
+        <div class="formula-box">=== GENERAL γ ===
+
+M₂² = [(γ-1)M₁² + 2] / [2γM₁² - (γ-1)]
+
+p₂/p₁ = [2γM₁² - (γ-1)] / (γ+1)
+
+T₂/T₁ = [2γM₁² - (γ-1)][2 + (γ-1)M₁²] / [(γ+1)²M₁²]
+
+ρ₂/ρ₁ = (γ+1)M₁² / [2 + (γ-1)M₁²]
+
+V₂/V₁ = [2 + (γ-1)M₁²] / [(γ+1)M₁²]
+
+=== FOR AIR (γ = 1.4) — SIMPLIFIED ===
+
+M₂² = (M₁² + 5) / (7M₁² - 1)
+
+p₂/p₁ = (7M₁² - 1) / 6
+
+T₂/T₁ = (7M₁² - 1)(M₁² + 5) / (36M₁²)
+
+ρ₂/ρ₁ = 6M₁² / (M₁² + 5)
+
+Maximum density ratio as M₁→∞: ρ₂/ρ₁ → 6 for air
+
+p₀₂/p₀₁ = [6M₁²/(M₁²+5)]^3.5 × [6/(7M₁²-1)]^2.5 < 1 always</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Quick Values to Memorise</div>
+        <div class="formula-box">M₁=1.5: M₂=0.701, p₂/p₁=2.458, T₂/T₁=1.320
+M₁=2.0: M₂=0.577, p₂/p₁=4.500, T₂/T₁=1.688
+M₁=2.5: M₂=0.513, p₂/p₁=7.125, T₂/T₁=2.138
+M₁=3.0: M₂=0.475, p₂/p₁=10.33, T₂/T₁=2.679</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.4</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Change in entropy across a normal shock. Explain strength of a shock and variation of flow properties across it.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Entropy Change</div>
+        <div class="formula-box">Δs = s₂ - s₁ = Cₚ ln(T₂/T₁) - R ln(p₂/p₁)
+                   = -R ln(p₀₂/p₀₁)    ← since T₀ is conserved
+
+Since p₀₂/p₀₁ < 1 always:  -R ln(p₀₂/p₀₁) > 0  → Δs > 0 ✓
+
+Entropy increases across every normal shock.
+The stagnation pressure p₀ is the measure of irreversibility.</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Strength of a Shock</div>
+        <div class="ans-text"><p><strong>Shock strength</strong> = (p₂-p₁)/p₁ = pressure ratio across shock minus 1:</p></div>
+        <div class="formula-box">Shock strength = (p₂-p₁)/p₁ = (2γ(M₁²-1))/(γ+1)
+
+For air: = (7(M₁²-1))/6
+
+→ Strength increases with M₁. At M₁=1: strength=0 (no shock). At M₁=2: strength = 2.5.</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Variation of Properties Across Normal Shock</div>
+        <ul class="bullet-list">
+          <li><strong>Pressure p:</strong> Increases (p₂ &gt; p₁) — always</li>
+          <li><strong>Temperature T:</strong> Increases (T₂ &gt; T₁) — always</li>
+          <li><strong>Density ρ:</strong> Increases (ρ₂ &gt; ρ₁) — always, max ratio = (γ+1)/(γ-1) = 6 for air</li>
+          <li><strong>Velocity V:</strong> Decreases (V₂ &lt; V₁) — always</li>
+          <li><strong>Mach number M:</strong> Decreases, M₂ &lt; 1 always</li>
+          <li><strong>Stagnation temperature T₀:</strong> UNCHANGED (adiabatic)</li>
+          <li><strong>Stagnation pressure p₀:</strong> DECREASES — measure of losses</li>
+          <li><strong>Entropy s:</strong> INCREASES — irreversible process</li>
+        </ul>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Oblique Shocks &amp; Expansion Waves</div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.5</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain θ-β-M diagram. Define and distinguish between weak shock and strong shock solutions.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 3/4 Papers</span><span class="tag tag-marks">4–12 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Key Quantities</div>
+        <ul class="bullet-list">
+          <li><strong>θ</strong> = deflection angle (flow turning, set by geometry)</li>
+          <li><strong>β</strong> = wave angle (shock angle from upstream flow)</li>
+          <li><strong>M₁</strong> = upstream Mach number</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Governing Equation</div>
+        <div class="formula-box">tan θ = 2 cot β × [M₁²sin²β - 1] / [M₁²(γ + cos 2β) + 2]
+
+For given M₁ and θ: two values of β (weak and strong shock)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Features of the θ-β-M Diagram</div>
+        <ol class="steps-list">
+          <li><strong>Two solutions</strong> for any M₁ and θ &lt; θ_max: smaller β = weak shock, larger β = strong shock.</li>
+          <li><strong>θ_max line</strong>: Maximum possible deflection for attached oblique shock. Beyond θ_max → detached bow shock.</li>
+          <li><strong>Sonic line (M₂=1)</strong>: Separates weak-supersonic from weak-subsonic downstream regions.</li>
+          <li><strong>M₁=∞ limit</strong>: All curves converge, θ_max approaches ~45.5° for air.</li>
+        </ol>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-cell">
+          <div class="compare-cell-title">Weak Shock</div>
+          <ul>
+            <li>Smaller β (wave angle)</li>
+            <li>M₂ usually &gt; 1 (supersonic)</li>
+            <li>Lower pressure rise</li>
+            <li>Lower entropy rise</li>
+            <li>Natural/observed solution</li>
+          </ul>
+        </div>
+        <div class="compare-cell">
+          <div class="compare-cell-title green">Strong Shock</div>
+          <ul>
+            <li>Larger β (near 90°)</li>
+            <li>M₂ &lt; 1 (subsonic always)</li>
+            <li>High pressure rise</li>
+            <li>High entropy rise</li>
+            <li>Forced by back pressure</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-exam">📝 Draw: x-axis = θ (deflection), y-axis = β (wave angle). Curves for M₁ = 1.5, 2, 3, 5. Mark θ_max locus, sonic line, β=90° normal shock limit. Shade weak/strong regions.</div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.6</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Derive Prandtl's relation and Rankine-Hugoniot relation for an oblique shock wave.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 Apr 2023</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Oblique Shock Decomposition</div>
+        <div class="formula-box">Decompose velocity into normal (n) and tangential (t) components:
+
+V₁ₙ = V₁ sin β      V₁ₜ = V₁ cos β
+V₂ₙ = V₂ sin(β-θ)   V₂ₜ = V₂ cos(β-θ)
+
+KEY: Tangential component UNCHANGED across oblique shock
+     V₁ₜ = V₂ₜ  (tangential momentum unaffected)
+
+Normal Mach numbers:
+M₁ₙ = M₁ sin β  ← use this in ALL normal shock formulas
+M₂ₙ = M₂ sin(β-θ)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Prandtl's Relation (Oblique Shock)</div>
+        <div class="formula-box">V₁ₙ × V₂ₙ = a*²   ← same as normal shock but using normal components</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">All Rankine-Hugoniot for Oblique Shock</div>
+        <div class="formula-box">Replace M₁ with M₁ₙ = M₁sinβ in all normal shock formulas:
+
+p₂/p₁  = (7M₁ₙ² - 1)/6
+T₂/T₁  = (7M₁ₙ²-1)(M₁ₙ²+5)/(36M₁ₙ²)
+M₂ₙ²   = (M₁ₙ²+5)/(7M₁ₙ²-1)
+M₂     = M₂ₙ / sin(β-θ)   ← downstream Mach (full)</div>
+      </div>
+      <div class="callout callout-key">🔑 The entire oblique shock analysis reduces to: (1) find M₁ₙ = M₁sinβ, (2) apply normal shock formulas with M₁ₙ, (3) find M₂ = M₂ₙ/sin(β-θ).</div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.7</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Explain attached and detached shocks. What are reflected oblique shocks?</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-hot">🔥 Jul 2023</span><span class="tag tag-marks">3 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Attached Shock (θ &lt; θ_max)</div>
+        <ul class="bullet-list">
+          <li>Oblique shock anchored to tip of wedge/cone. Well-defined wave angle β.</li>
+          <li>Example: sharp-nosed supersonic missile, delta wing.</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Detached (Bow) Shock (θ &gt; θ_max)</div>
+        <ul class="bullet-list">
+          <li>No attached oblique shock solution exists. Curved shock stands ahead of body.</li>
+          <li>At centreline: nearly normal shock → subsonic downstream. Away from centreline: becomes oblique, weaker.</li>
+          <li>Example: blunt-nosed rockets, re-entry capsule.</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Reflected Shocks</div>
+        <div class="ans-text"><p>When an oblique shock hits a solid wall, it must reflect to maintain zero normal velocity at the wall. The reflected shock turns the flow back parallel to the wall.</p></div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Regular Reflection</div>
+            <ul>
+              <li>θ &lt; θ_max for M₂</li>
+              <li>Reflected shock is oblique</li>
+              <li>Two shocks + two deflections</li>
+              <li>Flow parallel to wall after</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Mach Reflection</div>
+            <ul>
+              <li>θ required &gt; θ_max for M₂</li>
+              <li>Mach stem forms at wall (normal shock)</li>
+              <li>Triple point configuration</li>
+              <li>Complex flow structure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">2.8</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Expansion waves — Prandtl-Meyer expansion. Supersonic flow around a convex corner. Mach waves.</div>
+        <div class="q-tags"><span class="tag tag-m2">Module 2</span><span class="tag tag-marks">3–4 Marks</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">Prandtl-Meyer Expansion</div>
+        <div class="ans-text"><p>When supersonic flow encounters a <strong>convex corner</strong> (wall turns away from flow), it expands through a <strong>fan of Mach waves</strong> — isentropic, no entropy rise, stagnation pressure constant.</p></div>
+        <div class="formula-box">Prandtl-Meyer function:
+ν(M) = √((γ+1)/(γ-1)) arctan√((γ-1)/(γ+1)(M²-1)) - arctan√(M²-1)
+
+Turning angle: θ = ν(M₂) - ν(M₁)
+Given M₁ and θ: ν(M₂) = ν(M₁) + θ → look up M₂
+
+Mach angle:  μ = arcsin(1/M)</div>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Properties Through Expansion Fan</div>
+        <ul class="bullet-list">
+          <li><strong>Isentropic</strong>: stagnation p₀ and T₀ preserved</li>
+          <li><strong>Mach number increases</strong>: M₂ &gt; M₁</li>
+          <li><strong>Pressure, temperature, density all decrease</strong></li>
+          <li>Fan is bounded by Mach wave at μ₁ = arcsin(1/M₁) and Mach wave at μ₂ = arcsin(1/M₂)</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Contrast with Oblique Shock</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Oblique Shock (concave corner)</div>
+            <ul><li>Irreversible, Δs &gt; 0</li><li>p₀ decreases</li><li>Flow compressed, M decreases</li></ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">P-M Expansion (convex corner)</div>
+            <ul><li>Isentropic, Δs = 0</li><li>p₀ constant</li><li>Flow expands, M increases</li></ul>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+<footer>ME 19-205-0801 · Module 2: Normal &amp; Oblique Shocks · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

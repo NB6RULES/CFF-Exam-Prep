@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference — Formula Sheet | CFF Exam Prep</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="page-wrap">
+  <div class="page-title">Quick Reference — All Formulas</div>
+  <div class="page-sub">Print this page · Bring mental cheatsheet to exam · Gas tables are permitted</div>
+
+  <div class="section-label">Module 1 — Isentropic Flow</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">R1</div>
+      <div class="q-text-wrap"><div class="q-title">Isentropic Flow Formulas + Critical Values</div></div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="formula-box">
+=== STAGNATION RELATIONS (γ=1.4, air) ===
+
+T₀/T  = 1 + (γ-1)/2 × M² = 1 + 0.2M²
+p₀/p  = (1 + 0.2M²)^3.5
+ρ₀/ρ  = (1 + 0.2M²)^2.5
+
+=== CRITICAL (M=1) CONDITIONS ===
+T*/T₀  = 2/(γ+1) = 0.8333
+p*/p₀  = (2/(γ+1))^(γ/(γ-1)) = 0.5283
+ρ*/ρ₀  = 0.6339
+V_max  = a₀√(2/(γ-1)) = a₀×√5 = 2.236 a₀  (air)
+
+=== AREA-MACH RELATION ===
+A/A* = (1/M) × [(1+0.2M²)/1.2]^3
+
+Key values (air):
+M=0.5: A/A*=1.340  M=1.0: A/A*=1.000
+M=1.5: A/A*=1.176  M=2.0: A/A*=1.688
+M=2.5: A/A*=2.637  M=3.0: A/A*=4.235
+
+=== MACH CONE ===
+sin μ = 1/M   μ = arcsin(1/M)
+
+=== MAX MASS FLOW (CHOKED) ===
+ṁ_max = 0.6847 × p₀A*/√T₀   [SI: kg/s, Pa, m², K]
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Module 2 — Normal &amp; Oblique Shocks</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">R2</div>
+      <div class="q-text-wrap"><div class="q-title">Normal Shock + Oblique Shock Formulas</div></div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="formula-box">
+=== NORMAL SHOCK (air, γ=1.4) ===
+
+M₂²    = (M₁²+5)/(7M₁²-1)
+p₂/p₁  = (7M₁²-1)/6
+T₂/T₁  = (7M₁²-1)(M₁²+5)/(36M₁²)
+ρ₂/ρ₁  = 6M₁²/(M₁²+5)     max=6 as M→∞
+T₀₂    = T₀₁  (conserved — adiabatic)
+p₀₂/p₀₁ < 1  (always a loss)
+V₁V₂   = a*²  (Prandtl-Meyer)
+Δs     = -R ln(p₀₂/p₀₁) > 0  always
+
+=== GENERAL γ ===
+M₂²    = [(γ-1)M₁²+2]/[2γM₁²-(γ-1)]
+p₂/p₁  = [2γM₁²-(γ-1)]/(γ+1)
+T₂/T₁  = [2γM₁²-(γ-1)][2+(γ-1)M₁²]/[(γ+1)²M₁²]
+ρ₂/ρ₁  = (γ+1)M₁²/[2+(γ-1)M₁²]
+
+=== OBLIQUE SHOCK ===
+M₁ₙ = M₁ sin β        (apply normal shock with M₁ₙ)
+M₂   = M₂ₙ/sin(β-θ)
+
+θ-β-M: tan θ = 2cotβ [M₁²sin²β-1]/[M₁²(γ+cos2β)+2]
+V₁ₙV₂ₙ = a*²   (Prandtl, normal components)
+
+=== EXPANSION WAVES ===
+ν(M) = √((γ+1)/(γ-1)) arctan√((γ-1)/(γ+1)(M²-1)) - arctan√(M²-1)
+θ = ν(M₂) - ν(M₁)     (isentropic, p₀ preserved)
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Module 3 — Fanno &amp; Rayleigh</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">R3</div>
+      <div class="q-text-wrap"><div class="q-title">Fanno Flow + Rayleigh Flow Formulas</div></div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="formula-box">
+=== FANNO FLOW (adiabatic friction, constant area) ===
+
+4fL*/D = (1-M²)/(γM²) + (γ+1)/(2γ) ln[(γ+1)M²/(2+(γ-1)M²)]
+
+T/T*  = (γ+1)/[2(1+(γ-1)/2 M²)]
+p/p*  = (1/M)√[(γ+1)/(2+(γ-1)M²)]
+p₀/p₀* = (1/M)[(1+0.2M²)/1.2]^3  (air)
+
+T₀ conserved. p₀ decreases. Both subsonic and supersonic → M=1.
+
+=== RAYLEIGH FLOW (frictionless, heat transfer, constant area) ===
+
+T/T*  = 4(γ+1)²M²/(1+γM²)²
+p/p*  = (γ+1)/(1+γM²)
+T₀/T₀* = 2(γ+1)M²[2+(γ-1)M²]/(1+γM²)²
+p₀/p₀* = [(γ+1)/(1+γM²)][(2+(γ-1)M²)/(γ+1)]^(γ/(γ-1))
+
+q = Cₚ(T₀₂-T₀₁) = Cₚ T₀* [(T₀₂/T₀*)-(T₀₁/T₀*)]
+
+Maximum T occurs at M=1/√γ = 0.845 (air).
+Cannot cross M=1 by heat addition alone in constant area.
+
+Rayleigh line in p-v: p = const - G²v  (straight line, negative slope)
+
+=== KEY COMPARISONS ===
+Fanno:   adiabatic, friction, T₀ constant
+Rayleigh: frictionless, heat added, T₀ changes
+Both:    M→1, p₀ decreases, choking at M=1
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Module 4 — Measurement Formulas</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">R4</div>
+      <div class="q-text-wrap"><div class="q-title">Measurement Devices — All Key Formulas</div></div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="formula-box">
+=== PITOT TUBE ===
+M<1: p₀ = p(1+0.2M²)^3.5   [isentropic — no shock]
+M>1: Use Rayleigh Pitot formula [bow shock → p₀₂ not p₀₁]
+
+=== RECOVERY FACTOR ===
+r = (T_aw-T)/(T₀-T)
+Laminar: r = √Pr ≈ 0.848
+Turbulent: r = Pr^(1/3) ≈ 0.896
+T_aw = T[1 + r×0.2M²]  (air)
+
+=== HOT WIRE ANEMOMETER ===
+King's Law: E² = A + BV^n  (n≈0.5)
+CCA: constant current → measure V
+CTA: constant temp (Wheatstone bridge) → faster, no burnout
+
+=== OPTICAL METHODS ===
+Shadowgraph:   ∝ ∂²ρ/∂x²   no knife edge   qualitative
+Schlieren:     ∝ ∂ρ/∂x    knife edge     qualitative
+Interferometer: ∝ ρ         reference beam  QUANTITATIVE
+
+Gladstone-Dale: n-1 = Kρ, K=2.26×10⁻⁴ m³/kg (air)
+ρ = ρ_ref + Δf×λ/(K×L)
+
+=== LDV ===
+V = Δf×λ/[2sin(θ/2)]   [non-intrusive, needs seeding]
+
+=== GAS PROPERTIES (air, standard) ===
+γ = 1.4
+R = 287 J/kg·K
+Cₚ = 1005 J/kg·K
+Cᵥ = 718 J/kg·K
+Pr = 0.72
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-label">Exam Strategy</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">ES</div>
+      <div class="q-text-wrap"><div class="q-title">How to write — 3 mark, 4 mark, 8–12 mark answers</div></div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody"><div class="qbody-inner">
+      <div class="ans-block">
+        <div class="ans-heading">3-Mark Questions</div>
+        <ul class="bullet-list">
+          <li>3 paragraphs/bullet points — one key idea each</li>
+          <li>One formula (derivation NOT needed unless asked)</li>
+          <li>One sketch with labels where applicable</li>
+          <li>~half a page max</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">4-Mark Derivation Questions</div>
+        <ul class="bullet-list">
+          <li>State starting equations clearly</li>
+          <li>Number your steps</li>
+          <li>Box the final result</li>
+          <li>State physical meaning of result</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">8–12 Mark Numericals</div>
+        <ul class="bullet-list">
+          <li><strong>GIVEN:</strong> list all data at top</li>
+          <li>Write formula BEFORE substituting numbers</li>
+          <li>Number each step</li>
+          <li>Box intermediate answers</li>
+          <li><strong>SUMMARY</strong> at end: list all final answers</li>
+          <li>Check units throughout</li>
+        </ul>
+      </div>
+      <div class="ans-block">
+        <div class="ans-heading">Sketch Questions (Module 4)</div>
+        <ul class="bullet-list">
+          <li>Large, clear sketch — not tiny</li>
+          <li>Label ALL components with arrows</li>
+          <li>Schlieren: label knife edge explicitly</li>
+          <li>Pitot: label inner tube (total) and outer tube (static) separately</li>
+          <li>Wind tunnel: label settling chamber, nozzle, test section, diffuser, drive</li>
+        </ul>
+      </div>
+      <div class="callout callout-exam">📝 GAS TABLES ARE PERMITTED IN THE EXAM. Use them for: A/A* values, Fanno 4fL*/D, normal shock M₂, Rayleigh T₀/T₀*, isentropic p₀/p at given M. Saves enormous time on numericals.</div>
+      <div class="callout callout-tip">💡 COMMON MISTAKES: (1) Forgetting to convert T to Kelvin. (2) Using γ=1.4 when problem gives different gas. (3) Using isentropic pitot formula in supersonic flow (must use Rayleigh). (4) Not stating physical meaning after derivations.</div>
+    </div></div>
+  </div>
+
+</div>
+<footer>ME 19-205-0801 · Quick Reference · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
