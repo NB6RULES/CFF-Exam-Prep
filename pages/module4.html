@@ -5,160 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 4 — Flow Measurement &amp; Wind Tunnels | CFF Exam Prep</title>
 <link rel="stylesheet" href="../css/style.css">
+<style>
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  margin: 12px 0;
+}
+.ref-table th {
+  background: var(--surface2);
+  color: var(--text2);
+  padding: 7px 10px;
+  text-align: left;
+  border: 1px solid var(--border2);
+  font-weight: 500;
+}
+.ref-table td {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  line-height: 1.5;
+}
+.ref-table tr:nth-child(even) td { background: var(--surface); }
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+</style>
 </head>
 <body>
 <script src="../js/nav.js"></script>
 <div class="page-wrap">
-  <div class="page-title">Module 4 — Flow Measurement &amp; Wind Tunnels</div>
-  <div class="page-sub">Pitot tubes · Schlieren · Shadowgraph · Interferometer · Hot wire · LDV · Wind tunnels · Shock tube</div>
+  <div class="page-title">Module 4 — Methods of Measurement &amp; Wind Tunnels</div>
+  <div class="page-sub">Reference: Fundamentals of Compressible Flow, Chapter 11 (pp. 302–343) · Pressure · Temperature · Velocity · Flow Visualization · Wind Tunnels</div>
 
-  <div class="section-label">Pressure &amp; Velocity Measurement</div>
+  <!-- ═══════════════════════════════════════════
+       §11.1  PRESSURE
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.1 — Pressure Measurement</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.1</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain the working of Prandtl Pitot static tube with a neat sketch. How is it used to measure Mach number in supersonic flow? State the Rayleigh Supersonic Pitot formula.</div>
+        <div class="q-title">Explain static pressure measurement, stagnation pressure measurement, Prandtl Pitot-static tube, and types of pressure measuring devices.</div>
         <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">4–9 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Construction</div>
-        <ul class="bullet-list blue">
-          <li><strong>Inner tube (pitot):</strong> Forward-facing hole at tip → flow stagnates here → measures total pressure p₀</li>
-          <li><strong>Outer tube (static):</strong> Small holes on the side surface, 8–10 diameters behind tip → undisturbed static pressure p</li>
-          <li>Both tubes connected to manometer/pressure transducer</li>
+        <div class="ans-heading blue">Why Pressure is the Key Measurement</div>
+        <div class="ans-text">
+          <p>Static and stagnation pressures are the most important measurable quantities in compressible flow. Density is determined from ρ = p/RT. Velocity is determined from p₀ – p. Stagnation pressure combined with stagnation temperature fixes the maximum mass flow rate through a nozzle. Difference of stagnation pressure at two points gives a measure of losses in the flow.</p>
+        </div>
+        <div class="formula-box">ṁ_max √T₀ / (A* p₀) = 0.0404   (γ=1.4, R=287 J/kg·K)   [from §11.1]</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.1.1 Static Pressure</div>
+        <div class="ans-text">
+          <p>Static pressure of a fluid stream over a surface is the pressure transmitted by an orifice in the <strong>plane of the flow</strong> to a measuring device. This orifice is a <strong>static pressure hole</strong>. Requirements:</p>
+        </div>
+        <ul class="bullet-list">
+          <li>Hole must be small, drilled neatly, away from flow disturbances</li>
+          <li>Free from burrs and other imperfections</li>
+          <li>Hole diameter: <strong>0.25 mm to 2.5 mm</strong> (larger → streamline disturbance error; smaller → slow response time)</li>
         </ul>
+        <div class="ans-text">
+          <p>When static pressure must be measured away from a wall, a <strong>static pressure probe</strong> (Fig 11.2a) is used — leading end closed, static holes drilled on surface at a suitable section. Aligned parallel to flow (accurate to ±5°).</p>
+        </div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Subsonic Measurement (M &lt; 1)</div>
-        <div class="formula-box">No shock forms. Use isentropic relation:
-p₀/p = (1 + (γ-1)/2 × M²)^(γ/(γ-1)) = (1 + 0.2M²)^3.5  for air
-
-Measure p₀ (pitot) and p (static), compute M:
-M = √[5 × ((p₀/p)^(2/7) - 1)]
-
-Then velocity: V = M × √(γRT) = M × √(γRp/ρ)</div>
+        <div class="ans-heading">§11.1.2 Stagnation Pressure — Pitot Tube</div>
+        <div class="ans-text">
+          <p>Since stagnation pressure p₀ is a <strong>measure of the entropy level</strong> of the fluid, its change indicates entropy increase due to irreversibility. The <strong>pitot tube</strong> (Fig 11.2b) — a bent stainless steel tube inserted into the flow with its open end facing the flow — brings the flow to near-rest conditions. This deceleration is nearly reversible → recorded pressure ≈ stagnation pressure p₀. Accurate to <strong>±20° from flow direction</strong>.</p>
+          <p>If a fluid is accelerated from an infinite reservoir reversibly: p_reservoir = p₀_jet. Similarly in a reversible nozzle, stagnation pressure throughout equals ambient pressure.</p>
+        </div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Supersonic Measurement (M &gt; 1) — Rayleigh Pitot Formula</div>
-        <div class="ans-text"><p><strong>Critical fact:</strong> In supersonic flow, a bow (normal) shock forms ahead of the pitot tube tip. The pitot tube measures post-shock stagnation pressure p₀₂ (not freestream p₀₁). The static taps (far back) are in undisturbed freestream, measuring p₁.</p></div>
+        <div class="ans-heading">§11.1.3 Mass Flow Weighted Mean Pressures</div>
+        <div class="formula-box">Mean static pressure over circular duct cross-section:
+p̄ = ∫₀ᴿ p dṁ / ∫₀ᴿ dṁ = ∫₀ᴿ 2πρcpr dr / ∫₀ᴿ 2πρcr dr   ...(11.4)
+
+If ρ and p don't vary radially → reduces to p (1D case).
+
+Mean stagnation pressure:
+p̄₀ = p̄ + ½ρc²  (if ρ, p constant)
+General: p̄₀ = ∫ρcpr dr/∫ρcr dr + ½(∫ρ²c³r dr/∫ρcr dr)   ...(11.6)</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.1.4 Types of Pressure Measuring Devices (Table 11.1)</div>
+        <table class="ref-table">
+          <tr><th colspan="2" style="color:var(--m4)">Low Pressures</th></tr>
+          <tr><td>Pirani gauges</td><td>10⁻⁵ – 1.3 mbar</td></tr>
+          <tr><td>Mcleod gauges</td><td>10⁻⁴ – 0.1 mbar</td></tr>
+          <tr><td>Diaphragm gauges</td><td>min 10⁻³ mbar</td></tr>
+          <tr><td>Inclined tube water micromanometer</td><td>min 5×10⁻⁴ mbar</td></tr>
+          <tr><td>Simple vertical tube manometer</td><td>0.1 mbar – 0.1 bar</td></tr>
+          <tr><td>Vertical tube mercury manometer</td><td>1.334 mbar – 1.334 bar</td></tr>
+          <tr><th colspan="2" style="color:var(--m4)">Medium Pressures</th></tr>
+          <tr><td>Strain gauge pressure pick-ups</td><td>0.1 – 7.5 bar</td></tr>
+          <tr><td>Variable inductance pressure transducers</td><td>0.05 – 35 bar</td></tr>
+          <tr><td>Piezoelectric pressure pick-ups</td><td>up to 350 bar</td></tr>
+          <tr><th colspan="2" style="color:var(--m4)">High Pressures</th></tr>
+          <tr><td>Bourdon type (spiral tube)</td><td>up to 75 bar</td></tr>
+          <tr><td>Capacitance type transducers</td><td>0.5 – 3600 bar</td></tr>
+          <tr><td>Bourdon gauge (C-type tube)</td><td>up to 7000 bar</td></tr>
+          <tr><td>Strain gauge pressure cells</td><td>7000 – 15000 bar</td></tr>
+        </table>
+        <div class="ans-text">
+          <p><strong>Manometers:</strong> Steady pressures in lower ranges measured by liquid manometers based on deflection of a liquid column (water/alcohol for low, mercury for high pressures). Tilting the tube amplifies reading by 2×, 5×, or 10× for 30°, 11.6°, 5.8° inclinations respectively.</p>
+          <p><strong>Bourdon tube:</strong> Most widely used mechanical gauge. Non-circular cross-section tube tends toward circular under pressure — free end moves, magnified for reading. C-type or spiral type.</p>
+          <p><strong>Electrical transducers</strong> — based on: (a) variation in resistance, (b) capacitance, (c) inductance, (d) thermal effects, (e) piezoelectric effect. Essential for fluctuating/unsteady pressure measurement. All require calibration.</p>
+          <p><strong>Pirani (thermal) gauge:</strong> Thin wire in Wheatstone bridge (Fig 11.4) enclosed in chamber exposed to pressure. Wire heated to ~250°C. At low pressures: fewer gas molecules → slower cooling → less current needed to maintain temperature. Current = pressure measure.</p>
+        </div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">Prandtl Pitot-Static Tube — Supersonic Flow</div>
+        <div class="ans-text">
+          <p>In supersonic flow (M &gt; 1), a <strong>bow (normal) shock forms ahead</strong> of the pitot tube tip. The tube therefore measures <strong>post-shock stagnation pressure p₀₂</strong> (not freestream p₀₁). The static taps (far back on the outer tube) measure freestream static pressure p₁.</p>
+        </div>
         <div class="formula-box">Rayleigh Supersonic Pitot Formula:
 p₀₂/p₁ = [(γ+1)²M₁²/(4γM₁²-2(γ-1))]^(γ/(γ-1)) × (1-γ+2γM₁²)/(γ+1)
 
 For air (γ=1.4):
-p₀₂/p₁ = [166.9M₁⁷] / [(7M₁²-1)^2.5]
+p₀₂/p₁ = [166.9 M₁⁷] / [(7M₁²-1)^2.5]
 
-This combines: normal shock (M₁→M₂, p₁→p₂) + isentropic (M₂→0, p₂→p₀₂)</div>
+Subsonic (M<1): no shock → isentropic: p₀/p = (1+0.2M²)^3.5</div>
+        <div class="callout callout-exam">📝 Key distinction always to write: In supersonic flow a bow shock forms ahead of pitot tube → tube reads p₀₂ (post-shock), NOT p₀₁ (freestream). Use Rayleigh formula for M>1. Use isentropic formula for M&lt;1. This distinction is tested in Apr 2024 Q I-h and Apr 2023 VIII-a.</div>
       </div>
-      <div class="callout callout-exam">📝 KEY: In supersonic flow — bow shock ahead of pitot → p₀₂ ≠ p₀₁. Always state this. April 2024 Q I-h and Apr 2023 VIII-a both tested this concept.</div>
+
     </div></div>
   </div>
+
+  <!-- ═══════════════════════════════════════════
+       §11.2  TEMPERATURE
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.2 — Temperature Measurement</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.2</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain temperature recovery factor — definition, values for laminar and turbulent flow, and significance.</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 Sept 2024 &amp; Apr 2023</span><span class="tag tag-marks">3 Marks</span></div>
+        <div class="q-title">Explain temperature measurement in compressible flow — correction factor (Kₜ), recovery factor (Rƒ), types of thermometers, and stagnation temperature probe. (§11.2)</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">3–9 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
-      <div class="ans-block">
-        <div class="ans-heading blue">Definition</div>
-        <div class="ans-text"><p>A temperature probe in high-speed flow does not measure the full stagnation temperature T₀ due to viscous dissipation and heat transfer effects. It measures the <strong>adiabatic wall temperature T_aw</strong>. The <strong>recovery factor r</strong> is:</p></div>
-        <div class="formula-box">r = (T_aw - T) / (T₀ - T)     where 0 < r ≤ 1
 
-Rearranging: T_aw = T + r(T₀ - T)
-
-Using T₀ = T(1 + (γ-1)/2 M²):
-T_aw = T × [1 + r(γ-1)/2 × M²]</div>
-      </div>
       <div class="ans-block">
-        <div class="ans-heading">Values</div>
-        <div class="formula-box">Laminar BL:   r = √Pr  ≈ √0.72 ≈ 0.848
-Turbulent BL: r = Pr^(1/3) ≈ 0.72^0.333 ≈ 0.896
-(Prandtl number for air at normal conditions: Pr ≈ 0.72)
-
-If Pr = 1: r = 1 → probe reads true T₀
-(Some diatomic gases have Pr ≈ 1)</div>
-      </div>
-      <div class="ans-block">
-        <div class="ans-heading">Significance</div>
+        <div class="ans-heading blue">Why Probes Don't Read True T or T₀</div>
+        <div class="ans-text">
+          <p>At high fluid velocities, the temperature Tᵣ recorded by any thermometer or temperature probe is <strong>neither the static temperature T nor the stagnation temperature T₀</strong>. The difference is appreciable and cannot be neglected for M &gt; 0.3. Causes (from §11.2):</p>
+        </div>
         <ul class="bullet-list blue">
-          <li>All temperature probes in high-speed flows read T_aw, not T₀.</li>
-          <li>True T₀ = T_aw + (1-r)(T₀-T) — requires recovery factor correction.</li>
-          <li>Critical in supersonic wind tunnel temperature measurement, aerodynamic heating analysis.</li>
-          <li>Aircraft skin temperature: T_skin ≈ T_aw = T × (1 + r × 0.2M²) for air.</li>
+          <li><strong>(a)</strong> At high velocity, shocks may develop near the probe — interferes with correct measurement</li>
+          <li><strong>(b)</strong> Boundary layers surround and separate the probe from free stream; energy dissipated in BL raises temperature near probe (beyond rise due to deceleration)</li>
+          <li><strong>(c)</strong> If probe is hotter than surroundings — heat flows from probe to gas</li>
+          <li><strong>(d)</strong> Outward heat conduction through stem or thermocouple connecting wires — makes process non-adiabatic</li>
         </ul>
       </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.2.1 Correction Factor Kₜ</div>
+        <div class="ans-text"><p>To account for all above factors, a correction factor Kₜ is defined (Eq. 11.8):</p></div>
+        <div class="formula-box">Kₜ = (Tᵣ - T) / (T₀ - T)   ...(11.8)
+
+where: Tᵣ = temperature recorded by probe
+       T  = true static temperature
+       T₀ = true stagnation temperature</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.2.2 Recovery Factor Rƒ</div>
+        <div class="ans-text">
+          <p>If temperature is measured under <strong>adiabatic conditions</strong> (no outward heat transfer — condition (d) eliminated), the measured value is the <strong>adiabatic wall temperature T_aw</strong>. The recovery factor Rƒ is:</p>
+        </div>
+        <div class="formula-box">Rƒ = (T_aw - T) / (T₀ - T)   ...(11.9)
+
+Combining with T₀ = T + c²/(2Cₚ)  and  Rƒ = 2Cₚ(T_aw-T)/c²  ...(11.10):
+
+T_aw/T = 1 + Rƒ × (γ-1)/2 × M²   ...(11.11)
+
+Standard values used in practice (§11.2.2 textbook):
+  Subsonic flow:   Rƒ = 0.89
+  Supersonic flow: Rƒ = 0.86
+
+Theoretical values (Prandtl number based):
+  Laminar BL:   Rƒ = √Pr ≈ 0.848  (air, Pr≈0.72)
+  Turbulent BL: Rƒ = Pr^(1/3) ≈ 0.896</div>
+        <div class="ans-text">
+          <p>Rƒ depends on the type of probe, growth of the boundary layer, and Mach number. Figure 11.5 in the textbook shows how T₀, T_aw, Tᵣ, and T vary with Mach number — all four curves diverge increasingly at higher M.</p>
+        </div>
+        <div class="callout callout-tip">💡 Note: The textbook gives Rƒ = 0.89 (subsonic), 0.86 (supersonic) as practical values. The theoretical Prandtl-number-based values differ slightly. Cite both in your answer for full coverage.</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.2.5 Resistance Thermometers</div>
+        <div class="formula-box">Rₜ = R₀(1 + C₁T + C₂T² + ··· + CₙTⁿ)   ...(11.12)
+
+Metals: copper, nickel, platinum.
+Platinum: range −270°C to 1000°C.
+Flat grid pasted on surface → Wheatstone bridge circuit (Fig 11.6):
+  Sensing element R₃ in one arm; R₄ variable for null point.
+  Linear calibration: R vs T from separate experiment.</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.2.6 Thermocouples</div>
+        <div class="formula-box">EMF generated between two junctions of dissimilar metals at T and T₀:
+Vₐ - V_b = ∫[T₀ to T] (S*_A - S*_B) dT   ...(11.13)
+
+Thermocouple pairs (Table 11.2):
+  Copper-constantan:         −200 to 350°C,  60 µV/°C at 350°C
+  Platinum-rhodium:          −150 to 1000°C
+  Iron-constantan:           −200 to 1300°C
+  Chromel-alumel:            0 to 1500°C
+  Pt-Pt/rhodium:             6 µV/°C at 100°C
+  Rhodium iridium-rhodium:   up to 2000°C
+
+Wire diameter: 0.5 to 2.5 mm.
+Measured by potentiometer or milli/micro voltmeter (Fig 11.7).</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.2.7 Stagnation Temperature Probe (High Velocity Total Temperature Probe)</div>
+        <div class="ans-text">
+          <p>To measure stagnation temperature directly, the thermojunction is inserted into a <strong>total pressure tube</strong> to create near-stagnation conditions (Figure 11.8). Key design features:</p>
+        </div>
+        <ul class="bullet-list blue">
+          <li><strong>Shield:</strong> Minimises heat losses due to conduction and radiation</li>
+          <li><strong>Heat insulators:</strong> Enclose thermocouple wires to further reduce conduction losses</li>
+          <li><strong>Vents:</strong> Let in fresh gas sample around thermojunction</li>
+          <li>Result: recovery factor approaching <strong>unity (Rƒ ≈ 1)</strong></li>
+        </ul>
+      </div>
+
     </div></div>
   </div>
 
-  <div class="section-label">Optical Flow Visualization</div>
+  <!-- ═══════════════════════════════════════════
+       §11.4 + §11.5  VELOCITY
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.4 &amp; §11.5 — Velocity Measurement</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.3</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain Schlieren apparatus with a neat figure. Differentiate from Shadowgraph technique.</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All 4 Papers</span><span class="tag tag-marks">3–9 Marks</span></div>
+        <div class="q-title">Classification of velocity measurement methods. Pitot-static tube for velocity and flow rate. Vane anemometer.</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-marks">3–4 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Shadowgraph</div>
-        <div class="ans-text"><p><strong>Principle:</strong> Based on ∂²ρ/∂x² (second derivative of density). Light bends in density gradients — the shadow on screen shows where bending changes abruptly (shocks).</p></div>
-        <div class="formula-box">Signal ∝ ∂²n/∂x² ∝ ∂²ρ/∂x²</div>
-        <div class="ans-text"><p><strong>Setup (draw):</strong> Point source → condenser lens → parallel light → test section → screen. No knife edge.</p></div>
-        <div class="ans-text"><p><strong>Shows:</strong> Only abrupt density changes (shocks, detonations). Cannot resolve gradual gradients.</p></div>
+        <div class="ans-heading blue">§11.4 Classification by Range</div>
+        <ul class="bullet-list blue">
+          <li>Velocity measurement in <strong>incompressible flow</strong></li>
+          <li>Velocity measurement in <strong>compressible flow</strong></li>
+          <li>Velocity measurement in <strong>supersonic flow</strong></li>
+        </ul>
+        <div class="ans-text"><p>Four basic principles:</p></div>
+        <ul class="bullet-list">
+          <li>(a) Dynamic effect on a tiny windmill → <strong>vane anemometer</strong></li>
+          <li>(b) Bringing flow to rest in stream tube → <strong>pitot-static tube</strong></li>
+          <li>(c) Cooling effect on heated element → <strong>hot-wire / hot-film anemometer</strong></li>
+          <li>(d) Doppler effect → <strong>laser Doppler velocimeter (LDV)</strong></li>
+        </ul>
       </div>
-      <div class="divider"></div>
+
       <div class="ans-block">
-        <div class="ans-heading">Schlieren Apparatus</div>
-        <div class="ans-text"><p><strong>Principle:</strong> Based on ∂ρ/∂x (first derivative). Uses a knife edge to block refracted rays, creating contrast proportional to density gradient.</p></div>
-        <div class="formula-box">Signal ∝ ∂n/∂x ∝ ∂ρ/∂x   (MORE sensitive than shadowgraph)</div>
-        <div class="ans-text"><p><strong>Setup (draw — label all components):</strong></p></div>
-        <ol class="steps-list">
-          <li>Point light source (bright, small — pinhole or arc lamp)</li>
-          <li>Collimating lens L1 → parallel beam through test section</li>
-          <li>Focusing lens L2 → brings refracted rays to focal point</li>
-          <li><strong>Knife edge</strong> at focal point of L2 — blocks some refracted rays (critical component!)</li>
-          <li>Camera/screen beyond knife edge</li>
-        </ol>
-        <div class="ans-text"><p><strong>Shows:</strong> Both shocks AND gentle gradients (boundary layers, heat plumes, mixing layers). Knife edge orientation controls which gradient direction is visible.</p></div>
+        <div class="ans-heading">§11.4.1 Incompressible Flow — Pitot-Static Tube</div>
+        <div class="formula-box">Bernoulli: p₀ = p + ½ρc²
+→ ½ρc² = p₀ - p = Δp   ...(11.14)   c = √(2Δp/ρ)</div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Comparison</div>
-        <div class="compare-grid">
-          <div class="compare-cell">
-            <div class="compare-cell-title">Shadowgraph</div>
-            <ul>
-              <li>∂²ρ/∂x² — second derivative</li>
-              <li>No knife edge</li>
-              <li>Simple setup</li>
-              <li>Only abrupt changes visible</li>
-              <li>Cannot detect boundary layers</li>
-              <li>Less sensitive</li>
-            </ul>
-          </div>
-          <div class="compare-cell">
-            <div class="compare-cell-title green">Schlieren</div>
-            <ul>
-              <li>∂ρ/∂x — first derivative</li>
-              <li>Knife edge essential</li>
-              <li>More complex</li>
-              <li>Gradual + abrupt changes visible</li>
-              <li>Boundary layers, heat plumes visible</li>
-              <li>More sensitive</li>
-            </ul>
-          </div>
+        <div class="ans-heading">§11.7.1 Pitot Traverse for Flow Rate in Circular Duct</div>
+        <div class="formula-box">Infinitesimal ring: dq = c dA = c(2πr dr)   ...(11.19)
+Total volume flow:  q = c̄πR² = ∫₀ᴿ c(2πr dr)   ...(11.20)
+
+Two graphical forms:
+  q = 2π ∫₀ᴿ cr dr   ...(11.21)   → plot cr vs r, area = ∫cr dr
+  q = π ∫₀ᴿ c d(r²)  ...(11.22)   → plot c vs r², area = ∫c d(r²)
+
+Can also use Simpson's rule or Trapezoidal rule for numerical integration.</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.4.4 Vane Anemometer</div>
+        <div class="ans-text">
+          <p>A tiny windmill: flat plate blades (generally 8), small and light, mounted on a freely rotating shaft. RPM of rotor shaft is a measure of air velocity — transmitted to a pointer through a reduction gear (worm and wormwheel). Particularly useful for <strong>low velocities in small pipes and ducts</strong>. Calibrated by a standard pitot-static tube.</p>
         </div>
       </div>
+
     </div></div>
   </div>
 
@@ -166,265 +313,432 @@ If Pr = 1: r = 1 → probe reads true T₀
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.4</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain the Interferometer technique for flow visualization. How does it give quantitative density data?</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All 4 Papers</span><span class="tag tag-marks">3–9 Marks</span></div>
+        <div class="q-title">Explain Hot-Wire Anemometer — constant temperature (CTA) and constant current (CCA) types. Circuit diagrams, King's Law, calibration curves. (§11.5)</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">4–12 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Principle</div>
-        <div class="ans-text"><p>Uses wave optics: when coherent light passes through a region of varying density, its optical path length changes (refractive index n ∝ density ρ). Interference with a reference beam produces fringes — fringe shift = quantitative density change.</p></div>
-        <div class="formula-box">Gladstone-Dale:  n - 1 = Kρ    (K = 2.26×10⁻⁴ m³/kg for air)
-
-Optical path difference: ΔL = (n-1)L = KρL
-
-Fringe shift: Δf = ΔL/λ = K(ρ-ρ_ref)L/λ
-
-Density from fringe count:
-ρ = ρ_ref + Δf × λ/(K×L)
-
-→ QUANTITATIVE absolute density (unlike Schlieren/Shadowgraph)</div>
+        <div class="ans-heading blue">§11.5 Principle</div>
+        <div class="ans-text">
+          <p>A hot-wire anemometer consists of a <strong>tiny wire (d ≈ 0.005 mm = 5 µm)</strong> held between two prongs; heated to a given temperature by electric current. Its resistance depends on temperature (Eq. 11.12). When introduced into gas flow, it cools due to convective heat transfer. Two operating modes:</p>
+        </div>
+        <div class="formula-box">(a) Wire maintained at constant temperature T → constant resistance Rᵥ = R₄
+    → increase current to balance cooling → CONSTANT TEMPERATURE type
+(b) Heating current kept constant → resistance varies with velocity
+    → voltage changes with velocity → CONSTANT CURRENT type</div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Mach-Zehnder Interferometer Setup (draw)</div>
-        <ol class="steps-list">
-          <li>Coherent laser source</li>
-          <li>Beam splitter 1 → splits into Test beam and Reference beam</li>
-          <li>Test beam through wind tunnel test section (density varies)</li>
-          <li>Reference beam through undisturbed air (same path length)</li>
-          <li>Beam recombiner (Beam splitter 2) → both beams merge</li>
-          <li>Camera → interference fringes visible</li>
-        </ol>
+        <div class="ans-heading">§11.5.1 Constant Temperature Hot-Wire (CTA) — Fig 11.13</div>
+        <div class="ans-text">
+          <p>The wire element (Rᵥ = R₄) is held between two needle supports; <strong>l/d ratio ≈ 200</strong> to reduce heat conduction to supports. Circuit: Wheatstone bridge with R₁, R₄(=Rᵥ), R₂, R₃ fixed and variable R₅. Initial balance: R₁ adjusted. When gas velocity changes → cooling changes Rᵥ → bridge unbalanced → R₅ readjusted to restore balance. <strong>Each velocity gives a different bridge current</strong> — this is the calibration.</p>
+          <p>Calibration curves (Figure 11.14): gas velocity vs current, at two wire temperatures. Higher wire temperature → higher sensitivity. Maximum wire temperature: ~700°C (burnout beyond this).</p>
+          <p>CTA is widely used for <strong>turbulence and unsteady flow measurement</strong> — small sensing element causes negligible disturbance.</p>
+        </div>
+        <div class="formula-box">King's Law:  E² = A + B × c^n    (c = velocity, n ≈ 0.5)
+Calibration: rotating arm moves wire at known speeds → measure current
+Output to oscilloscope for turbulence measurement</div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Fringe Interpretation</div>
-        <ul class="bullet-list blue">
-          <li>Straight parallel fringes → uniform density (undisturbed)</li>
-          <li>Bent fringes → density gradient</li>
-          <li>Fringe shift by Δf fringes → density change = Δf × λ/(KL)</li>
-          <li>Near shocks: abrupt fringe shift</li>
-        </ul>
+        <div class="ans-heading">§11.5.2 Constant Current Hot-Wire (CCA) — Fig 11.15</div>
+        <div class="ans-text">
+          <p>The current through the hot-wire element is kept constant. The temperature (and hence resistance) changes with flow velocity. A <strong>micro or milli voltmeter</strong> across the wire records the variation of voltage with gas velocity. Calibration curve: Figure 11.16.</p>
+        </div>
+        <div class="formula-box">Circuit (Fig 11.15): Constant current source → hot wire element.
+Voltmeter V records voltage drop variation with velocity.
+Amplifier improves frequency response.
+
+Limitation: frequency response is limited — NOT as versatile as CTA.
+Performance in fluctuating flows improved by dynamic compensation.</div>
       </div>
-      <div class="callout callout-key">🔑 Advantage over Schlieren: Interferometer gives ABSOLUTE density values (quantitative). Schlieren and Shadowgraph only show gradients qualitatively.</div>
+
+      <div class="compare-grid">
+        <div class="compare-cell">
+          <div class="compare-cell-title">CCA — Constant Current (§11.5.2)</div>
+          <ul>
+            <li>Current = constant</li>
+            <li>Temperature/resistance varies</li>
+            <li>Output: voltage drop across wire</li>
+            <li>Limited frequency response</li>
+            <li>Simpler circuit; amplifier for compensation</li>
+          </ul>
+        </div>
+        <div class="compare-cell">
+          <div class="compare-cell-title green">CTA — Constant Temperature (§11.5.1)</div>
+          <ul>
+            <li>Temperature/resistance = constant</li>
+            <li>Current varies via R₅/Wheatstone bridge</li>
+            <li>Output: bridge current for each velocity</li>
+            <li>High frequency response (~50 kHz)</li>
+            <li>Ideal for turbulence and unsteady flows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-exam">📝 Jul 2023 (12 marks) asked all four types with neat sketches: CTA (Fig 11.13), CCA (Fig 11.15), Stagnation Temperature Probe (Fig 11.8), Prandtl Pitot-Static Tube (Fig 11.9). Draw circuits accurately with Wheatstone bridge arms labeled R₁–R₅.</div>
+
     </div></div>
   </div>
 
-  <div class="section-label">Velocity &amp; Temperature Sensors</div>
+  <!-- ═══════════════════════════════════════════
+       §11.11  LASER
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.11 — Laser Techniques &amp; Velocimetry</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.5</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain Hot Wire Anemometer — constant current and constant temperature types. King's Law.</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">4–9 Marks</span></div>
+        <div class="q-title">Explain Laser Doppler Velocimeter (LDV/LDA) and Dual-Focus Laser Velocimeter. Advantages of laser techniques over conventional methods. (§11.11)</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 Sept 2024 &amp; Apr 2024</span><span class="tag tag-marks">3–9 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Principle</div>
-        <div class="ans-text"><p>A fine electrically heated wire (~5μm dia, ~1mm long tungsten) in the flow loses heat by convection. Heat loss rate depends on velocity → measures V from electrical output.</p></div>
-        <div class="formula-box">Heat balance: I²R_w = h×A×(T_w - T_fluid)
-King's Law:   E² = A + B×V^n   (n≈0.5 laminar, 0.45 turbulent)</div>
-      </div>
-      <div class="ans-block">
-        <div class="ans-heading">CCA — Constant Current Anemometer</div>
-        <ul class="bullet-list">
-          <li>Constant current I fed to wire</li>
-          <li>V increases → more cooling → T_w drops → R_w drops → voltage across wire drops</li>
-          <li>Measure voltage → infer V via King's Law calibration</li>
-          <li>Slow response (~1 kHz). Risk of burnout if V drops suddenly.</li>
-        </ul>
-      </div>
-      <div class="ans-block">
-        <div class="ans-heading">CTA — Constant Temperature Anemometer (preferred)</div>
+        <div class="ans-heading blue">§11.11 Introduction</div>
+        <div class="ans-text">
+          <p>Laser = Light Amplification by Stimulated Emission of Radiation. Strong, monochromatic, coherent light source. The <strong>scattered light from minute solid particles</strong> in the flow (natural or <strong>artificially seeded at ~1 micron</strong>) is used as a velocity signal. Two widely used systems:</p>
+        </div>
         <ul class="bullet-list blue">
-          <li>Wire resistance (= temperature) kept constant via Wheatstone bridge + feedback amplifier</li>
-          <li>V increases → cooling → bridge imbalance → amplifier increases I → temperature restored</li>
-          <li>Output: bridge voltage E → V via King's Law</li>
-          <li>Fast response (~50–100 kHz). No burnout. Suitable for turbulence measurement.</li>
+          <li>(a) <strong>Laser Doppler Velocimeter (LDV/LDA)</strong> — Doppler frequency shift</li>
+          <li>(b) <strong>Dual-Focus Laser Velocimeter</strong> — particle flight time between two focal volumes</li>
         </ul>
-        <div class="formula-box">CTA Wheatstone bridge: R₁/R₂ = R_fixed/R_w  (balanced)
-Imbalance → error voltage → amplifier → correcting current
-Output bridge voltage E: E² = A + B×V^n</div>
-      </div>
-      <div class="compare-grid">
-        <div class="compare-cell">
-          <div class="compare-cell-title">CCA</div>
-          <ul><li>Constant current</li><li>Slow (~1 kHz)</li><li>Burnout risk</li><li>Simple circuit</li></ul>
-        </div>
-        <div class="compare-cell">
-          <div class="compare-cell-title green">CTA (preferred)</div>
-          <ul><li>Constant temperature</li><li>Fast (50–100 kHz)</li><li>No burnout</li><li>Feedback bridge circuit</li></ul>
+        <div class="ans-text">
+          <p>Lasers used: Helium-Neon (0.5–100 mW, lower cost, higher reliability), Argon-ion (5–15 W), CO₂ (1–100 W). Higher power → greater noise.</p>
         </div>
       </div>
-      <div class="callout callout-exam">📝 Jul 2023 asked all 4 types: CCA, CTA, High Velocity Total Temperature Probe, Prandtl Pitot Static Tube — all with sketches, 12 marks total.</div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.11.1 Laser Doppler Velocimeter (LDV) — Dual-Beam</div>
+        <div class="ans-text">
+          <p>When light is scattered by a moving particle, the scattered light has a <strong>Doppler frequency shift Δf</strong> proportional to particle velocity. <strong>Two modes:</strong></p>
+          <p><strong>Forward scatter</strong> (Fig 11.40): transmitting and receiving optics on opposite sides of test section. Lower laser power required.</p>
+          <p><strong>Backscatter</strong> (Fig 11.41): entire system on one side. More convenient for traversing; needs higher laser power.</p>
+          <p><strong>Setup (dual-beam, forward scatter, Fig 11.40):</strong></p>
+        </div>
+        <ol class="steps-list">
+          <li>Laser beam → beam splitter → two equal beams</li>
+          <li>Transmitting optics (beam splitter, lenses) → lens A focuses both beams at <strong>measuring/probe volume M</strong> [&lt;1 mm³]</li>
+          <li>Fringe pattern (alternating light/dark bands) formed at probe volume</li>
+          <li>Seeding particles (~1 µm) pass through probe volume → scattered light pulses as each fringe is crossed</li>
+          <li>Collecting lens B → photodetector → signal processor → Doppler frequency Δf → velocity</li>
+        </ol>
+        <div class="formula-box">V = Δf × λ / (2 sin(θ/2))
+
+where: Δf = Doppler frequency shift (measured)
+       λ  = laser wavelength
+       θ  = angle between two laser beams</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.11.2 Dual-Focus Laser Velocimeter</div>
+        <div class="ans-text">
+          <p>Layout: Fig 11.42 (forward scatter) and Fig 11.43 (backscatter). Two cylindrical lenses + beam splitter focus beams at <strong>two focal volumes A and B</strong>, separated by distance x (≈ 20× beam waist width, microscopic ~10 µm width).</p>
+        </div>
+        <div class="formula-box">Working principle (transit time method):
+  Particle passes through focal volume A → START signal to clock
+  Same particle passes through focal volume B → STOP signal to clock
+  Transit time: t = time between start and stop
+  Fluid velocity: c = x / t
+
+Backscatter version (Fig 11.43):
+  Scattered light from A and B collected BACK on same side as laser
+  Only one transparent window needed on test section
+  Entire laser + detector system on one side → easy traversing</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.11.3 Advantages of Laser Techniques</div>
+        <ul class="bullet-list blue">
+          <li><strong>Non-intrusive</strong> — does not disturb the flow (no probe inserted)</li>
+          <li>Measures velocities in regions <strong>inaccessible by other devices</strong> — excellent for boundary layer measurements</li>
+          <li><strong>No calibration required</strong> — working is independent of pressure, temperature, and fluid density</li>
+          <li>Wide velocity range: <strong>0.1 – 300 m/s</strong>; very high frequency response</li>
+          <li>Velocity varies <strong>linearly with signal</strong> over wide range</li>
+          <li>Easily interfaced with a computer</li>
+          <li>Applications: turbomachinery, wind tunnels, water tunnels, combustion studies, heat exchangers, aerospace, nuclear engineering</li>
+        </ul>
+      </div>
+
     </div></div>
   </div>
+
+  <!-- ═══════════════════════════════════════════
+       §11.10  FLOW VISUALIZATION
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.10 — Flow Visualization Techniques</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.6</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain the working of a Laser Doppler Velocimeter (Velocimeter/LDV) with a neat figure.</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 Sept 2024 &amp; Apr 2024</span><span class="tag tag-marks">3–8 Marks</span></div>
+        <div class="q-title">Explain Shadowgraph (§11.10.1), Schlieren technique (§11.10.3), and Interferometer (§11.10.2) with neat figures. Compare all three techniques.</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All 4 Papers</span><span class="tag tag-marks">3–12 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
-      <div class="ans-block">
-        <div class="ans-heading blue">Principle — Doppler Effect</div>
-        <div class="formula-box">Velocity from Doppler frequency shift:
-V = Δf × λ / (2 sin(θ/2))
 
-where: Δf = Doppler frequency shift
-       λ = laser wavelength
-       θ = angle between two intersecting beams
+      <div class="ans-block">
+        <div class="ans-heading blue">§11.10.1 Shadow Technique (Shadowgraph) — Fig 11.37</div>
+        <div class="ans-text">
+          <p>The arrangement shown in Figure 11.37 is often referred to as a <strong>shadowgraph</strong>. A collimating lens provides a collimated (parallel) beam of light from a source. This beam passes through the transparent walls of the test section. The shadow picture of the flow is directly obtained on a white screen placed on the other side of the test section.</p>
+        </div>
+        <div class="formula-box">Principle:
+  Degree of brightness on screen ∝ ∂²ρ/∂x²  (second spatial derivative of density)
 
-No physical contact with flow required — fully non-intrusive.</div>
+Setup (draw Fig 11.37):
+  Light source → Collimating lens → Test section (transparent walls) → Screen
+  NO knife edge · NO focusing lens
+
+Gives clear pictures of density variations in flows with SHOCKS and COMBUSTION.
+Equipment is INEXPENSIVE and EASY to operate — main advantage.</div>
       </div>
+
+      <div class="divider"></div>
+
       <div class="ans-block">
-        <div class="ans-heading">Dual-Beam LDV Setup (draw)</div>
-        <ol class="steps-list">
-          <li>Single laser beam → beam splitter → two equal beams</li>
-          <li>Focusing optics: both beams cross at a small measurement volume in the flow</li>
-          <li>Fringe pattern (alternating light/dark bands) formed at intersection</li>
-          <li>Seeding particles (~1μm oil/TiO₂) flow through measurement volume</li>
-          <li>Each particle crossing a fringe → burst of scattered light</li>
-          <li>Photodetector → burst frequency = Doppler frequency Δf</li>
-          <li>Signal processor → compute V</li>
-        </ol>
-      </div>
-      <div class="ans-block">
-        <div class="ans-heading">Advantages</div>
-        <ul class="bullet-list blue">
-          <li>Non-intrusive — no probe disturbs the flow</li>
-          <li>No calibration needed (direct physics-based relationship)</li>
-          <li>Can measure very high velocities including supersonic</li>
-          <li>Flow direction measurable (with frequency shifting)</li>
-          <li>2D/3D velocity with multiple beam pairs</li>
+        <div class="ans-heading">§11.10.2 Interferometer Technique (Mach-Zehnder) — Fig 11.38</div>
+        <div class="ans-text">
+          <p>The <strong>variation of density in the flow field is directly determined</strong> from the interference pattern on screen or photographic plate. The most widely used apparatus is the <strong>Mach-Zehnder interferometer</strong>.</p>
+          <p><strong>Construction (Fig 11.38):</strong> Two plane half-silvered mirrors (splitters A and C) and two fully reflecting mirrors B and D. Parallel beam from light source through lens L and concave mirror M₁. Splitter A splits beam into:</p>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Test beam:</strong> Part reflected by A → transparent test section → reflected by mirror D → to M₂ through splitter C</li>
+          <li><strong>Reference beam:</strong> Part from A → mirror B → reference section (identical transparent walls = compensating plates) → to M₂ via splitter C</li>
+          <li>Both beams recombine at M₂ → screen → interference fringes</li>
         </ul>
+        <div class="formula-box">Principle:
+  No flow → both beams in phase → uniform fringes (screen uniformly lit)
+  With flow → density variation in test section → optical path difference
+  → beams out of phase → interference fringe pattern on screen
+
+Gladstone-Dale: n - 1 = Kρ,  K = 2.26×10⁻⁴ m³/kg (air)
+Fringe shift: Δf = K(ρ - ρ_ref)L/λ
+→ ρ = ρ_ref + Δf·λ/(K·L)    QUANTITATIVE density data
+
+Suitable for QUANTITATIVE density measurement.
+Requires EXPENSIVE equipment, difficult to operate.</div>
       </div>
+
+      <div class="divider"></div>
+
+      <div class="ans-block">
+        <div class="ans-heading">§11.10.3 Schlieren Technique — Fig 11.39</div>
+        <div class="ans-text">
+          <p>The <strong>density gradient ∂ρ/∂x</strong> in the flow field is obtained from the varying degree of brightness on the screen. Degree of brightness is proportional to the density gradient.</p>
+          <p><strong>Setup (Figure 11.39):</strong></p>
+        </div>
+        <ol class="steps-list">
+          <li>Light source → concave mirror M₁ → collimated beam through test section</li>
+          <li>Beam from test section reflected via concave mirrors M₂ and M₃ to screen</li>
+          <li><strong>Sharp knife edge</strong> inserted at <strong>focal point of mirror M₂</strong> — intercepts about half the light</li>
+          <li>Without flow: screen uniformly illuminated (half light passes knife edge)</li>
+          <li>With flow: refraction in variable-density field → rays deflected → more/less light passes knife edge → varying intensity on screen</li>
+        </ol>
+        <div class="formula-box">Principle:
+  Degree of brightness ∝ ∂ρ/∂x  (first derivative — more sensitive)
+
+Knife edge orientation determines which gradient direction is detected.
+Shows: shocks + boundary layers + heat plumes + mixing zones</div>
+      </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">Three-Way Comparison Table</div>
+        <table class="ref-table">
+          <tr><th>Feature</th><th>Shadowgraph</th><th>Schlieren</th><th>Interferometer</th></tr>
+          <tr><td>Physical quantity</td><td>∂²ρ/∂x² (2nd deriv.)</td><td>∂ρ/∂x (1st deriv.)</td><td>ρ itself (absolute)</td></tr>
+          <tr><td>Key component</td><td>Collimating lens only</td><td>Knife edge at M₂ focus</td><td>Splitters A, C + mirrors B, D</td></tr>
+          <tr><td>Detects</td><td>Abrupt changes only (shocks)</td><td>Gradients, shocks, BL, plumes</td><td>All density variations</td></tr>
+          <tr><td>Sensitivity</td><td>Lowest</td><td>Medium (most practical)</td><td>Highest</td></tr>
+          <tr><td>Data output</td><td>Qualitative only</td><td>Qualitative only</td><td>Quantitative (density values)</td></tr>
+          <tr><td>Equipment</td><td>Inexpensive, easy</td><td>Moderate cost</td><td>Expensive, difficult to operate</td></tr>
+          <tr><td>Reference section</td><td>Not needed</td><td>Not needed</td><td>Required (compensating plates)</td></tr>
+          <tr><td>Best for</td><td>Shocks, combustion</td><td>General flow visualization</td><td>Quantitative density mapping</td></tr>
+        </table>
+      </div>
+
+      <div class="callout callout-exam">📝 Drawing requirements for full marks: (1) Shadowgraph — light source, collimating lens, test section (transparent walls), screen. (2) Schlieren — light source, concave mirrors M₁/M₂/M₃, test section, knife edge at focal point of M₂, screen. (3) Interferometer — light source, lens L, mirror M₁, splitter A, test section, mirror D, splitter C, mirror B, reference section, M₂, screen. Apr 2024 Q IX-b asked to differentiate Schlieren and Shadowgraph (8 marks). Sept 2024 Q VIII-b asked Schlieren + Interferometer + Velocimeter together.</div>
+
     </div></div>
   </div>
+
+  <!-- ═══════════════════════════════════════════
+       §11.8.6  SHOCK TUBE
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.8.6 — Shock Tube</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.7</div>
       <div class="q-text-wrap">
-        <div class="q-title">Explain the working principle of a Shock Tube with a neat sketch.</div>
+        <div class="q-title">Explain the construction and working of a Shock Tube with a neat sketch. State its advantages and limitations. (§11.8.6)</div>
         <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 Apr 2024</span><span class="tag tag-marks">3–4 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Purpose</div>
-        <div class="ans-text"><p>A shock tube generates controlled shock waves of known strength for short durations — used for aerodynamic testing, high-temperature gas dynamics, and combustion research without a wind tunnel.</p></div>
+        <div class="ans-heading blue">Definition</div>
+        <div class="ans-text">
+          <p>A shock tube is another form of a <strong>blowdown or intermittent tunnel</strong>. A stagnant gas is set in motion by the passage of a strong shock wave — hence "shock tube". It generates high Mach number flow for very short durations.</p>
+        </div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Construction &amp; Components (draw)</div>
+        <div class="ans-heading">Construction — Figure 11.34</div>
         <ul class="bullet-list blue">
-          <li><strong>Driver section:</strong> High pressure gas (p₄, usually He or H₂ for strong shocks)</li>
-          <li><strong>Diaphragm:</strong> Thin metal/plastic membrane, separates sections</li>
-          <li><strong>Driven section:</strong> Low pressure test gas (p₁, usually air or gas under study)</li>
-          <li>Instrumentation ports along driven section</li>
+          <li><strong>High pressure (driver) section</strong> (HP section): gas at very high pressure (many atmospheres) — usually He or H₂ for strong shocks</li>
+          <li><strong>Diaphragm</strong>: thin metal/plastic membrane separating sections</li>
+          <li><strong>Low pressure (driven) section</strong> (LP section): maintained at high vacuum — contains the test gas</li>
+          <li><strong>Test section:</strong> located in the LP section — model placed here</li>
+          <li>Automatic recording instruments and photographic equipment kept ready before test run</li>
         </ul>
       </div>
-      <div class="ans-block">
-        <div class="ans-heading">Working Sequence</div>
-        <ol class="steps-list">
-          <li>Diaphragm bursts (pressure ratio p₄/p₁ exceeds burst pressure)</li>
-          <li>Incident shock wave propagates INTO driven section at speed V_s</li>
-          <li>Expansion (rarefaction) wave propagates BACK into driver section</li>
-          <li>Contact surface separates driver gas from test gas (they don't mix)</li>
-          <li>Test gas behind shock: high T and p, uniform for short duration (μs to ms)</li>
-          <li>Shock reflects off end wall → even higher T, p for ignition studies</li>
-        </ol>
-        <div class="formula-box">Four regions after burst:
-Region 1: Undisturbed test gas (ahead of shock)
-Region 2: Shocked test gas (uniform T₂, p₂, V₂) ← test region
-Region 3: Expanded driver gas
-Region 4: Undisturbed driver gas
 
-Shock Mach number M_s: p₂/p₁ = (7M_s²-1)/6  (normal shock, air)</div>
+      <div class="ans-block">
+        <div class="ans-heading">Working</div>
+        <ol class="steps-list">
+          <li>Pressure in HP section increased further until diaphragm ruptures</li>
+          <li>Due to high pressure difference: <strong>strong shock wave moves into LP section</strong> at high speed, imparting high velocity (high Mach number) to test gas</li>
+          <li>Simultaneously, an <strong>expansion wave propagates back</strong> into driver (HP) section</li>
+          <li>A <strong>contact surface</strong> separates driver gas from test gas — they do not mix</li>
+          <li>Test gas behind shock: <strong>high T and p</strong>, uniform conditions for very short duration</li>
+          <li>Time of operation: <strong>in terms of milliseconds</strong> — very short</li>
+        </ol>
+        <div class="formula-box">Four regions after diaphragm rupture (Fig 11.34):
+  Region 4: Undisturbed driver gas (HP)
+  Region 3: Driver gas processed by expansion wave
+  Region 2: Test gas processed by shock ← uniform T₂, p₂  [TEST REGION]
+  Region 1: Undisturbed test gas (ahead of shock) (LP)
+
+Normal shock relations at shock front:
+  p₂/p₁ = (7M_s²-1)/6    T₂/T₁ = (7M_s²-1)(M_s²+5)/(36M_s²)   [air]</div>
       </div>
+
+      <div class="ans-block">
+        <div class="ans-heading">Practical Problem &amp; Advantage</div>
+        <div class="compare-grid">
+          <div class="compare-cell">
+            <div class="compare-cell-title">Practical Problem</div>
+            <ul>
+              <li>At very high vacuum in LP side: ambient air forces into section through joints and porous walls</li>
+              <li>Serious at high Mach numbers</li>
+              <li>Resolved by specially designed joints and non-porous materials</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-cell-title green">Great Advantage</div>
+            <ul>
+              <li>Absence of LOW temperature in test section</li>
+              <li>High stagnation temperature occurs in test section</li>
+              <li>Representative of actual hypersonic flight conditions</li>
+              <li>Ideal for combustion/ignition delay studies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div></div>
   </div>
 
-  <div class="section-label">Wind Tunnels</div>
+  <!-- ═══════════════════════════════════════════
+       §11.8  WIND TUNNELS
+  ═══════════════════════════════════════════ -->
+  <div class="section-label">§11.8 — Wind Tunnels</div>
 
   <div class="qcard">
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.8</div>
       <div class="q-text-wrap">
-        <div class="q-title">Describe subsonic and supersonic wind tunnels. Open vs closed circuit. Special problems of supersonic tunnels.</div>
-        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All 4 Papers</span><span class="tag tag-marks">8–12 Marks</span></div>
+        <div class="q-title">Describe subsonic and supersonic wind tunnels. Blowdown type. Open vs closed circuit. Why diffuser throat area &gt; nozzle throat area. Special problems of supersonic tunnels. (§11.8)</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 All Papers</span><span class="tag tag-marks">8–12 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
-        <div class="ans-heading blue">Subsonic Wind Tunnel (M &lt; 1)</div>
+        <div class="ans-heading blue">Subsonic Wind Tunnels (M &lt; 1)</div>
+        <div class="ans-text"><p>Used for M &lt; 2.5 (with proper design). Main components:</p></div>
         <ul class="bullet-list blue">
-          <li><strong>Settling chamber:</strong> Large, low-velocity. Screens and honeycombs remove turbulence.</li>
-          <li><strong>Contraction (nozzle):</strong> Converging section, contraction ratio 6–10:1. Accelerates and uniformizes flow.</li>
-          <li><strong>Test section:</strong> Uniform parallel subsonic flow. Model mounted here.</li>
-          <li><strong>Diffuser:</strong> Expanding section — decelerates flow, recovers pressure energy. Reduces fan power.</li>
-          <li><strong>Fan/drive:</strong> Blower type (fan pushes) or suction type (fan pulls).</li>
+          <li><strong>Settling chamber:</strong> Large, low-velocity with screens and honeycombs to remove turbulence. Stagnation conditions p₀₁, T₀₁ here.</li>
+          <li><strong>Contraction nozzle:</strong> Converging section (contraction ratio 6–10:1) — accelerates and uniformizes flow.</li>
+          <li><strong>Test section:</strong> Uniform, parallel, subsonic flow. Model mounted here. Measurements taken.</li>
+          <li><strong>Diffuser:</strong> Diverging section — decelerates flow, recovers pressure energy, reduces drive power.</li>
+          <li><strong>Fan/drive:</strong> Blower type (fan pushes air in) or suction type (fan pulls air through).</li>
         </ul>
+        <div class="ans-text"><p>Mass of air in test section ≈ 10× mass of high-pressure air. This depends on Mach number and area ratio of nozzle to test section.</p></div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Supersonic Wind Tunnel (M &gt; 1)</div>
+        <div class="ans-heading">§11.8.5 Supersonic Wind Tunnels</div>
+        <div class="ans-text">
+          <p>Three arrangements (§11.8.5):</p>
+        </div>
         <ul class="bullet-list">
-          <li><strong>High pressure reservoir / compressor:</strong> Creates high stagnation pressure upstream.</li>
-          <li><strong>C-D Nozzle:</strong> Throat → M=1, diverging section → supersonic M in test section.</li>
-          <li><strong>Test section:</strong> Supersonic uniform flow. Model tested.</li>
-          <li><strong>Diffuser (second C-D):</strong> Decelerates supersonic flow. Normal shock at diffuser throat (minimum loss).</li>
-          <li><strong>Vacuum tank or exhaust:</strong> Receives decelerated flow.</li>
+          <li><strong>(i) Open circuit continuous type</strong> (Fig 11.32): Compressor continuously supplies reservoir → C-D nozzle accelerates to supersonic in test section. M = f(p/p₀₁). Test section area fixed by compressor capacity and Mach number. Air must pass through drier. Compressor power very high (open-ended, wastes kinetic energy).</li>
+          <li><strong>(ii) Blowdown (intermittent) type</strong>: High pressure air stored in large reservoirs. Quick opening valve starts tunnel. Operation: 1/4 to 5 min. Only power needed is to refill reservoirs — economical. Constant pressure valve at nozzle entry. Can also use high vacuum downstream (ambient air as supply).</li>
+          <li><strong>(iii) Closed circuit continuous type</strong> (Fig 11.33a): Compressor + reservoir + nozzle + test section + supersonic diffuser + downstream receiver + drier + cooler. High KE at test section exit partly recovered by diffuser → compressor receives gas at higher pressure → reduced pressure ratio and power. Any gas (not just air) can be used. Stagnation temperature rises continuously — cooler needed before compressor (cooling before compression is more efficient than after).</li>
         </ul>
-        <div class="formula-box">Power required scales with pressure ratio:
-At M=2: p₀/p_exit ≈ 7.8:1
-At M=3: p₀/p_exit ≈ 36:1  → enormous power!</div>
+        <div class="formula-box">Closed circuit compressor pressure ratio:
+p_r = p₀₁/p₀₂   (losses only from shock in diffuser)
+
+T₀₁ rises continuously → must cool air before compressor.
+Cooling before compression: W_c &lt; W_c'   (lower T_i → less work)</div>
+        <div class="ans-text">
+          <p>To reach higher Mach numbers at same flow velocity, gases of higher molecular weight can be used. Freon-21 (R = 0.095 kJ/kg·K, a = 181.4 m/s) has a sound speed ~half of air → Mach number in Freon-21 is about twice that in air at the same velocity.</p>
+        </div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Open vs Closed Circuit</div>
+        <div class="ans-heading">Open Circuit vs Closed Circuit</div>
         <div class="compare-grid">
           <div class="compare-cell">
-            <div class="compare-cell-title">Open Circuit (Eiffel Type)</div>
+            <div class="compare-cell-title">Open Circuit (Continuous)</div>
             <ul>
-              <li>Air from atmosphere, exhausted back</li>
-              <li>Simple, cheap</li>
+              <li>All air from atmosphere</li>
+              <li>All air must pass through drier</li>
+              <li>Cannot use special gases</li>
+              <li>Wastes kinetic energy to atmosphere</li>
+              <li>Lower capital cost</li>
               <li>External disturbances enter</li>
-              <li>Cannot control humidity/T</li>
-              <li>Higher running cost</li>
             </ul>
           </div>
           <div class="compare-cell">
-            <div class="compare-cell-title green">Closed Circuit (Göttingen Type)</div>
+            <div class="compare-cell-title green">Closed Circuit (Continuous)</div>
             <ul>
-              <li>Air recirculates in closed loop</li>
-              <li>Energy-efficient</li>
-              <li>Controlled conditions</li>
-              <li>Can pressurize for Re control</li>
-              <li>Needs cooler; expensive</li>
+              <li>Air/gas recirculates</li>
+              <li>Small drier — not all air passes through</li>
+              <li>Any gas can be used</li>
+              <li>KE partly recovered by diffuser</li>
+              <li>Higher capital cost, cooler needed</li>
+              <li>Controlled, stable conditions</li>
             </ul>
           </div>
         </div>
       </div>
+
       <div class="ans-block">
         <div class="ans-heading">Special Problems of Supersonic Wind Tunnels</div>
         <ol class="steps-list">
-          <li><strong>Starting problem:</strong> During start-up, a strong starting shock travels through the test section. Diffuser throat must be large enough to swallow it.</li>
-          <li><strong>Enormous power:</strong> Pressure ratios of 10–150:1 require huge compressors or vacuum tanks. Often intermittent (blowdown) to reduce cost.</li>
-          <li><strong>Diffuser sizing:</strong> Diffuser throat must exceed nozzle throat to start; later narrowed for efficiency.</li>
-          <li><strong>Flow uniformity:</strong> Boundary layers on nozzle walls disturb core flow — must use displacement correction contours.</li>
-          <li><strong>Condensation:</strong> Moisture in air condenses during rapid expansion — must use dry air.</li>
-          <li><strong>Short run times:</strong> Intermittent tunnels run seconds — instruments must respond fast.</li>
-          <li><strong>Model forces:</strong> High dynamic pressure — stiff support stings required.</li>
+          <li><strong>Starting problem:</strong> Starting shock must traverse the entire test section and be swallowed by the diffuser. Diffuser throat must be large enough to pass the starting shock — otherwise tunnel won't start. Model experiences transient high loads.</li>
+          <li><strong>High power requirement:</strong> Pressure ratios of 7.8:1 (M=2) to 36:1 (M=3) require enormous compressors. Compressor must maintain p_r = p₀₁/p₀₂ continuously in closed-circuit operation.</li>
+          <li><strong>Diffuser throat oversizing:</strong> A*_diffuser must exceed A*_nozzle to start the tunnel. After starting, diffuser throat can be reduced (variable-geometry) for efficiency. Fixed-geometry tunnels accept some steady-state inefficiency.</li>
+          <li><strong>Stagnation temperature rise (closed circuit):</strong> T₀₁ continuously rises due to energy dissipation → cooler required before compressor to maintain constant T₀₁.</li>
+          <li><strong>Condensation:</strong> Rapid expansion in nozzle causes moisture condensation → use thoroughly dried air (anhydrous CaCl₂, alumina desiccant).</li>
+          <li><strong>Short run time (blowdown):</strong> 1/4 to 5 minutes — all instruments must have fast response.</li>
+          <li><strong>Model mounting:</strong> Very high dynamic pressures → rigid sting supports and force balances required.</li>
         </ol>
       </div>
+
     </div></div>
   </div>
 
@@ -432,42 +746,90 @@ At M=3: p₀/p_exit ≈ 36:1  → enormous power!</div>
     <div class="qhead" onclick="toggleCard(this.parentElement)">
       <div class="q-index">4.9</div>
       <div class="q-text-wrap">
-        <div class="q-title">Why is it desirable to locate the shock at the diffuser throat during operation of a supersonic wind tunnel? Why must diffuser throat be larger than nozzle throat?</div>
+        <div class="q-title">Why is it desirable to locate the shock at the diffuser throat? Why must the diffuser throat be larger than the nozzle throat?</div>
         <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-hot">🔥 Sept 2024 Q IX-a</span><span class="tag tag-marks">4 Marks</span></div>
       </div>
       <div class="q-chevron">›</div>
     </div>
     <div class="qbody"><div class="qbody-inner">
+
       <div class="ans-block">
         <div class="ans-heading blue">Why Shock at Diffuser Throat is Desirable</div>
         <ol class="steps-list">
-          <li><strong>Minimum shock strength → minimum loss:</strong> As flow decelerates in the converging diffuser, M approaches 1 at the throat. A shock at M just above 1 is the weakest possible shock — stagnation pressure loss is nearly zero.</li>
-          <li><strong>Post-shock flow immediately subsonic:</strong> After the weak throat shock (M₂≈1), the diverging diffuser efficiently decelerates subsonic flow to low velocity.</li>
-          <li><strong>Contrast with other locations:</strong> Shock in test section (M = 2, 3, or more) would cause massive stagnation pressure loss — 28% at M=2, 67% at M=3.</li>
+          <li><strong>Weakest possible shock → minimum stagnation pressure loss:</strong> As supersonic flow converges in the diffuser, M → 1 at the throat. A shock at M just above 1 is extremely weak — stagnation pressure loss nearly zero. This minimises the compressor pressure ratio p_r = p₀₁/p₀₂ needed in closed-circuit tunnels.</li>
+          <li><strong>Post-shock flow immediately subsonic:</strong> After weak throat shock (M₂ ≈ 1), the diverging portion of the diffuser efficiently decelerates subsonic flow — conventional subsonic diffusion.</li>
+          <li><strong>Contrast:</strong> A shock in the test section (M = 2 or 3) would cause 28–67% stagnation pressure loss, drastically increasing required compressor work.</li>
         </ol>
-        <div class="formula-box">Stagnation pressure loss:
-  Shock at M=1.05: p₀₂/p₀₁ ≈ 0.9997  (0.03% loss)
-  Shock at M=2.0:  p₀₂/p₀₁ ≈ 0.721   (28% loss)
-  Shock at M=3.0:  p₀₂/p₀₁ ≈ 0.328   (67% loss!)
+        <div class="formula-box">Stagnation pressure ratio across shock:
+  M_shock = 1.05: p₀₂/p₀₁ ≈ 0.9997  (0.03% loss)
+  M_shock = 2.0:  p₀₂/p₀₁ ≈ 0.721   (28% loss)
+  M_shock = 3.0:  p₀₂/p₀₁ ≈ 0.328   (67% loss)
 
-∴ Minimum-loss operation → shock at diffuser throat</div>
+∴ Shock at diffuser throat (near M=1) → minimum compressor power</div>
       </div>
+
       <div class="ans-block">
-        <div class="ans-heading">Why Diffuser Throat &gt; Nozzle Throat</div>
-        <div class="ans-text"><p>During start-up, a <strong>starting shock</strong> (strong, near-normal) must traverse the entire tunnel length and be swallowed by the diffuser. The diffuser throat must be large enough to pass this starting shock. If diffuser throat = nozzle throat, the starting shock cannot pass — the tunnel will not start.</p></div>
-        <div class="formula-box">Required: A*_diffuser > A*_nozzle  for starting
+        <div class="ans-heading">Why Diffuser Throat Must Be Larger Than Nozzle Throat</div>
+        <div class="ans-text">
+          <p>During start-up, the starting shock (a strong near-normal shock) must pass through the entire tunnel and be <strong>swallowed</strong> by the diffuser throat. The diffuser throat must be large enough to accommodate the mass flow with this starting shock:</p>
+        </div>
+        <div class="formula-box">For starting: A*_diffuser > A*_nozzle
 
-After starting (in steady supersonic operation with shock at diffuser throat):
-The effective stagnation pressure has dropped across the shock, so the
-effective throat area needed is A*_nozzle × (p₀₁/p₀₂) — which is < A*_nozzle.
-∴ Diffuser throat is oversized during steady operation → some efficiency loss.
-Variable-geometry diffusers reduce throat after starting for better efficiency.</div>
+In steady-state operation with shock at diffuser throat:
+  Stagnation pressure dropped across shock → p₀₂ &lt; p₀₁
+  Effective throat area needed = A*_nozzle × (p₀₁/p₀₂)
+  Since p₀₂/p₀₁ &lt; 1 → this needed area &lt; A*_nozzle
+  ∴ Diffuser throat is oversized in steady state → some inefficiency
+
+Variable-geometry diffuser: throat narrowed after starting for efficiency.
+Fixed-geometry diffuser: accepts the steady-state inefficiency.</div>
       </div>
+
+      <div class="key-answer">
+        <div class="key-answer-label">Key Conclusion to Write</div>
+        Shock at diffuser throat is desirable because it is the weakest possible shock, giving minimum stagnation pressure loss and minimum compressor work requirement. Diffuser throat must be larger than nozzle throat to allow the strong starting shock to be swallowed during tunnel start-up; after starting, variable-geometry diffusers reduce the throat toward the ideal value for efficient steady-state operation.
+      </div>
+
     </div></div>
   </div>
 
-</div>
-<footer>ME 19-205-0801 · Module 4: Flow Measurement &amp; Wind Tunnels · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+  <!-- Textbook embed -->
+  <div class="section-label">Textbook Reference</div>
+  <div class="qcard">
+    <div class="qhead" onclick="toggleCard(this.parentElement)">
+      <div class="q-index">TB</div>
+      <div class="q-text-wrap">
+        <div class="q-title">Textbook Scan — Chapter 11: Methods of Measurement (pp. 302–343)</div>
+        <div class="q-tags"><span class="tag tag-m4">Module 4</span><span class="tag tag-marks">Reference · 28 pages</span></div>
+      </div>
+      <div class="q-chevron">›</div>
+    </div>
+    <div class="qbody">
+      <div id="tb-body" style="display:none">
+        <iframe src="../docs/textbook-ch11.pdf" style="width:100%;height:820px;border:none;display:block;background:#fff;" title="Chapter 11 — Methods of Measurement"></iframe>
+      </div>
+      <div style="padding:14px 18px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button onclick="toggleTB()" id="tb-btn" style="font-family:var(--font-mono);font-size:11px;color:var(--blue);background:rgba(77,166,255,0.07);border:1px solid rgba(77,166,255,0.25);border-radius:3px;padding:6px 14px;cursor:pointer;">Show Textbook</button>
+        <a href="../docs/textbook-ch11.pdf" download="CFF-Ch11-Measurement.pdf" style="font-family:var(--font-mono);font-size:11px;color:var(--accent);background:rgba(240,180,41,0.07);border:1px solid rgba(240,180,41,0.25);border-radius:3px;padding:6px 14px;text-decoration:none;">↓ Download</a>
+        <a href="../docs/textbook-ch11.pdf" target="_blank" style="font-family:var(--font-mono);font-size:11px;color:var(--blue);background:rgba(77,166,255,0.07);border:1px solid rgba(77,166,255,0.25);border-radius:3px;padding:6px 14px;text-decoration:none;">↗ Open in tab</a>
+        <span style="font-family:var(--font-mono);font-size:10px;color:var(--text3);margin-left:auto;">Fundamentals of Compressible Flow · Ch. 11 · pp. 302–343</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-wrap -->
+
+<footer>ME 19-205-0801 · Module 4: Methods of Measurement · Reference: Fundamentals of Compressible Flow Ch.11 · <a href="../index.html" style="color:var(--accent);text-decoration:none">← Back to Index</a></footer>
+
 <script src="../js/main.js"></script>
+<script>
+function toggleTB() {
+  const b = document.getElementById('tb-body');
+  const btn = document.getElementById('tb-btn');
+  const open = b.style.display === 'block';
+  b.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'Show Textbook' : 'Hide Textbook';
+}
+</script>
 </body>
 </html>
